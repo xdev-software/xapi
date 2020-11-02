@@ -27,7 +27,7 @@ We would absolutely love to get the community involved, and we welcome any form 
 
 ### Get in touch with the team
 
-Twitter: https://twitter.com/xdevsoftware
+Twitter: https://twitter.com/xdevsoftware<br/>
 Mail: info@xdev-software.de
 
 ### Some ways to help:
@@ -39,5 +39,5 @@ We encourage you to read the [contribution instructions by GitHub](https://guide
 
 ## License
 
-The XDEV Application Framework is released under[GNU Lesser General Public License version 3](https://www.gnu.org/licenses/lgpl-3.0.en.html) aka LGPL 3
+The XDEV Application Framework is released under [GNU Lesser General Public License version 3](https://www.gnu.org/licenses/lgpl-3.0.en.html) aka LGPL 3
 
