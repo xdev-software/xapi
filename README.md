@@ -1,3 +1,7 @@
+[![Build](https://img.shields.io/github/workflow/status/xdev-software/xapi/Master%20CI)](https://github.com/xdev-software/xapi/actions?query=workflow%3A%22Master+CI%22)
+[![Latest version](https://img.shields.io/maven-central/v/com.xdev-software/xapi)](https://mvnrepository.com/artifact/com.xdev-software/xapi)
+[![Build Develop](https://img.shields.io/github/workflow/status/xdev-software/xapi/Develop%20CI/develop?label=build%20develop)](https://github.com/xdev-software/xapi/actions?query=workflow%3A%22Develop+CI%22+branch%3Adevelop)
+[![javadoc](https://javadoc.io/badge2/com.xdev-software/xapi/javadoc.svg)](https://javadoc.io/doc/com.xdev-software/xapi) 
 
 # XDEV Application Framework
 The XDEV Application Framework is the core of every application developed with XDEV-IDE. It provides a basic architecture and infrastructure for graphic Swing interfaces and database applications and facilitates many tasks that every Java programmer usually has to take care of himself, including: 
@@ -37,7 +41,13 @@ Mail: info@xdev-software.de
 
 We encourage you to read the [contribution instructions by GitHub](https://guides.github.com/activities/contributing-to-open-source/#contributing) also.
 
-## License
+## Dependencies and Licenses
+The XDEV Application Framework is released under [GNU Lesser General Public License version 3](https://www.gnu.org/licenses/lgpl-3.0.en.html) aka LGPL 3<br/>
+View the [summary of all dependencies online](https://xdev-software.github.io/xapi/dependencies/)
 
-The XDEV Application Framework is released under [GNU Lesser General Public License version 3](https://www.gnu.org/licenses/lgpl-3.0.en.html) aka LGPL 3
+## Releasing
+If the ``develop`` is ready for release, create a pull request to the ``master``-Branch and merge the changes
 
+When the release is finished do the following:
+* Merge the auto-generated PR (with the incremented version number) back into the ``develop``
+* Add the release notes to the [GitHub release](https://github.com/xdev-software/xapi/releases/latest)
