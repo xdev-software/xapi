@@ -9,11 +9,34 @@
 	<packaging>jar</packaging>
 
 	<name>XDEV Application Framework</name>
-
+	<description>XDEV Application Framework</description>
+	<url>https://github.com/xdev-software/xapi</url>
+	
+	<scm>
+		<url>https://github.com/xdev-software/xapi</url>
+		<connection>https://github.com/xdev-software/xapi.git</connection>
+	</scm>
+	
+	<inceptionYear>2003</inceptionYear>
+	
+	<organization>
+		<name>XDEV Software</name>
+		<url>https://xdev-software.de</url>
+	</organization>
+	
+	<developers>
+		<developer>
+			<name>XDEV Software</name>
+			<organization>XDEV Software</organization>
+			<url>https://www.xdev-software.de</url>
+		</developer>
+	</developers>
+	
 	<licenses>
 		<license>
 			<name>GNU Lesser General Public License version 3</name>
 			<url>https://www.gnu.org/licenses/lgpl-3.0.en.html</url>
+			<distribution>repo</distribution>
 		</license>
 	</licenses>
 
@@ -25,14 +48,6 @@
 		<maven.compiler.source>${javaVersion}</maven.compiler.source>
 		<maven.compiler.target>${javaVersion}</maven.compiler.target>
 	</properties>
-
-
-	<organization>
-		<name>XDEV Software</name>
-		<url>https://xdev-software.com</url>
-	</organization>
-	<inceptionYear>2003</inceptionYear>
-
 
 	<dependencies>
 		<dependency>
