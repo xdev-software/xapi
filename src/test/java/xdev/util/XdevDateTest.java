@@ -93,8 +93,8 @@ public class XdevDateTest
 	@Test
 	public void testNow_defaultBehavior()
 	{
-		XdevDate date_first = XdevDate.now();
-		XdevDate date_second = XdevDate.now();
+		final XdevDate date_first = XdevDate.now();
+		final XdevDate date_second = XdevDate.now();
 		
 		// The date must be the same
 		assertTrue(date_first.equalsDate(date_second));
@@ -167,7 +167,7 @@ public class XdevDateTest
 	@Test
 	public void testBetween_IsBetween()
 	{
-		XdevDate now = XdevDate.now();
+		final XdevDate now = XdevDate.now();
 		assertTrue(now.between(testDatePast,testDateFuture));
 	}
 	
@@ -178,7 +178,7 @@ public class XdevDateTest
 	@Test
 	public void testBetween_IsNotBetween()
 	{
-		XdevDate now = XdevDate.now();
+		final XdevDate now = XdevDate.now();
 		assertFalse(testDatePast.between(now,testDateFuture));
 	}
 	
@@ -219,7 +219,7 @@ public class XdevDateTest
 	@Test
 	public void testCopy_defaultBehavior()
 	{
-		XdevDate date = testDatePast.copy();
+		final XdevDate date = testDatePast.copy();
 		assertEquals(date,testDatePast);
 		assertEquals(date.getFormat(),testDatePast.getFormat());
 	}
@@ -231,10 +231,10 @@ public class XdevDateTest
 	@Test
 	public void testEquals_IsEqual()
 	{
-		XdevDate dateReference = testDatePast;
+		final XdevDate dateReference = testDatePast;
 		assertTrue(dateReference.equals(testDatePast));
 		
-		XdevDate date = testDatePast.copy();
+		final XdevDate date = testDatePast.copy();
 		assertTrue(date.equals(testDatePast));
 	}
 	
@@ -255,7 +255,7 @@ public class XdevDateTest
 	@Test
 	public void testEqualsDate_IsEqual()
 	{
-		XdevDate dateClone = testDatePast.clone();
+		final XdevDate dateClone = testDatePast.clone();
 		
 		assertFalse(testDatePast.equalsDate(testDateFuture));
 		assertTrue(dateClone.equalsDate(testDatePast));
@@ -269,7 +269,7 @@ public class XdevDateTest
 	@Test
 	public void testEqualsDate_IsNotEqual()
 	{
-		XdevDate dateClone = testDatePast.clone();
+		final XdevDate dateClone = testDatePast.clone();
 		
 		assertFalse(testDatePast.equalsDate(testDateFuture));
 		assertTrue(dateClone.equalsDate(testDatePast));
@@ -323,18 +323,18 @@ public class XdevDateTest
 	@Test
 	public void testFormat_defaultBehavior()
 	{
-		String datePattern = "yyyy.MM.dd";
-		String timePattern = "HH:mm:ss";
-		String point = ".";
+		final String datePattern = "yyyy.MM.dd";
+		final String timePattern = "HH:mm:ss";
+		final String point = ".";
 		
-		StringBuilder datePatternResult = new StringBuilder();
+		final StringBuilder datePatternResult = new StringBuilder();
 		datePatternResult.append(YEAR_FUTURE_DATE);
 		datePatternResult.append(point);
 		datePatternResult.append(MONTH_FUTURE_DATE + 1);
 		datePatternResult.append(point);
 		datePatternResult.append(DAY_FUTURE_DATE);
 		
-		StringBuilder timePatternResult = new StringBuilder();
+		final StringBuilder timePatternResult = new StringBuilder();
 		timePatternResult.append(HOUR_FUTURE_DATE);
 		timePatternResult.append(":");
 		timePatternResult.append(MINUTE_FUTURE_DATE);
@@ -567,12 +567,12 @@ public class XdevDateTest
 	@Test
 	public void testGetDurationBetween_defaultBehavior()
 	{
-		long otherTime = testDateFuture.getTimeInMillis();
-		long thisTime = testDatePast.getTimeInMillis();
+		final long otherTime = testDateFuture.getTimeInMillis();
+		final long thisTime = testDatePast.getTimeInMillis();
 		
-		long expectedDuration = Math.abs(otherTime - thisTime);
+		final long expectedDuration = Math.abs(otherTime - thisTime);
 		
-		Duration returnDuration = testDatePast.getDurationBetween(testDateFuture);
+		final Duration returnDuration = testDatePast.getDurationBetween(testDateFuture);
 		
 		assertEquals(expectedDuration,returnDuration.getMilliseconds());
 	}
@@ -585,11 +585,11 @@ public class XdevDateTest
 	public void testGetDurationSince_defaultBehavior()
 	{
 		
-		long soonerMillis = testDatePast.getTimeInMillis();
-		long thisMillis = testDateFuture.getTimeInMillis();
-		long expectedDuration = Math.abs(thisMillis - soonerMillis);
+		final long soonerMillis = testDatePast.getTimeInMillis();
+		final long thisMillis = testDateFuture.getTimeInMillis();
+		final long expectedDuration = Math.abs(thisMillis - soonerMillis);
 		
-		Duration returnDuration = testDateFuture.getDurationSince(testDatePast);
+		final Duration returnDuration = testDateFuture.getDurationSince(testDatePast);
 		
 		assertEquals(expectedDuration,returnDuration.getMilliseconds());
 	}
@@ -612,11 +612,11 @@ public class XdevDateTest
 	public void testGetDurationUntil_defaultBehavior()
 	{
 		
-		long laterMillis = testDateFuture.getTimeInMillis();
-		long thisMillis = testDatePast.getTimeInMillis();
-		long expectedDuration = Math.abs(laterMillis - thisMillis);
+		final long laterMillis = testDateFuture.getTimeInMillis();
+		final long thisMillis = testDatePast.getTimeInMillis();
+		final long expectedDuration = Math.abs(laterMillis - thisMillis);
 		
-		Duration returnDuration = testDatePast.getDurationUntil(testDateFuture);
+		final Duration returnDuration = testDatePast.getDurationUntil(testDateFuture);
 		
 		assertEquals(expectedDuration,returnDuration.getMilliseconds());
 	}
@@ -814,9 +814,9 @@ public class XdevDateTest
 	@Test
 	public void testMinus_defaultBehavior()
 	{
-		Duration duration = new Duration(2,2,0,0,0);
+		final Duration duration = new Duration(2,2,0,0,0);
 		
-		XdevDate expected = testDatePast.copy();
+		final XdevDate expected = testDatePast.copy();
 		
 		assertEquals(expected.rollBack(duration),testDatePast.minus(duration));
 	}
@@ -828,9 +828,9 @@ public class XdevDateTest
 	@Test
 	public void testPlus_defaultBehavior()
 	{
-		Duration duration = new Duration(2,2,0,0,0);
+		final Duration duration = new Duration(2,2,0,0,0);
 		
-		XdevDate expected = testDatePast.copy();
+		final XdevDate expected = testDatePast.copy();
 		
 		assertEquals(expected.rollForward(duration),testDatePast.plus(duration));
 	}
@@ -842,9 +842,9 @@ public class XdevDateTest
 	@Test
 	public void testRollForward_defaultBehavior()
 	{
-		Duration duration = new Duration(2,2,0,0,0);
+		final Duration duration = new Duration(2,2,0,0,0);
 		
-		XdevDate expected = testDatePast.copy();
+		final XdevDate expected = testDatePast.copy();
 		
 		testDatePast.roll(XdevDate.DAY_OF_MONTH,2);
 		testDatePast.roll(XdevDate.HOUR_OF_DAY,2);
@@ -859,9 +859,9 @@ public class XdevDateTest
 	@Test
 	public void testRollBack_defaultBehavior()
 	{
-		Duration duration = new Duration(2,2,0,0,0);
+		final Duration duration = new Duration(2,2,0,0,0);
 		
-		XdevDate expected = testDatePast.copy();
+		final XdevDate expected = testDatePast.copy();
 		expected.rollBack(duration);
 		
 		assertEquals(expected,testDatePast.minus(duration));
@@ -871,7 +871,7 @@ public class XdevDateTest
 	public void testTimeStamp_defaultBehavior()
 	{
 		final long currentTimeMillis = testDateFuture.getTimeInMillis();
-		XdevDate date = new XdevDate(currentTimeMillis);
+		final XdevDate date = new XdevDate(currentTimeMillis);
 		assertEquals(date.timeStamp(),currentTimeMillis);
 	}
 	
@@ -879,8 +879,8 @@ public class XdevDateTest
 	@Test
 	public void testGetTime_defaultBehavior()
 	{
-		Date javdate = testDatePast.getTime();
-		assertEquals(javdate.getTime(),1230418800000L);
+		final Date javdate = testDatePast.getTime();
+		assertEquals(1230418800000L, javdate.getTime());
 	}
 	
 	
@@ -893,10 +893,10 @@ public class XdevDateTest
 	@Test
 	public void testHashCode()
 	{
-		XdevDate testDate1 = new XdevDate(YEAR_PAST_DATE,MONTH_PAST_DATE,DAY_PAST_DATE);
-		XdevDate testDate2 = new XdevDate(YEAR_PAST_DATE,MONTH_PAST_DATE,DAY_PAST_DATE);
+		final XdevDate testDate1 = new XdevDate(YEAR_PAST_DATE,MONTH_PAST_DATE,DAY_PAST_DATE);
+		final XdevDate testDate2 = new XdevDate(YEAR_PAST_DATE,MONTH_PAST_DATE,DAY_PAST_DATE);
 		
-		Set<XdevDate> dates = new HashSet<>();
+		final Set<XdevDate> dates = new HashSet<>();
 		dates.add(testDate1);
 		dates.add(testDate2);
 		/*
@@ -918,9 +918,9 @@ public class XdevDateTest
 	@Test
 	public void testEquals_Issue11417()
 	{
-		XdevDate testDate1 = new XdevDate(YEAR_PAST_DATE,MONTH_PAST_DATE,DAY_PAST_DATE);
-		XdevDate testDate2 = new XdevDate(YEAR_PAST_DATE,MONTH_PAST_DATE,DAY_PAST_DATE);
-		GregorianCalendar cal = testDate2;
+		final XdevDate testDate1 = new XdevDate(YEAR_PAST_DATE,MONTH_PAST_DATE,DAY_PAST_DATE);
+		final XdevDate testDate2 = new XdevDate(YEAR_PAST_DATE,MONTH_PAST_DATE,DAY_PAST_DATE);
+		final GregorianCalendar cal = testDate2;
 		assertTrue(testDate1.equals(cal));
 		assertTrue(cal.equals(testDate1));
 		

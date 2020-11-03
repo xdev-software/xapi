@@ -111,7 +111,9 @@ public class XdevFileTest
 		final XdevDate lastModif = XdevDate.now();
 		this.fth.getFirstFile().setLastModified(lastModif);
 		
-		Assert.assertTrue(lastModif.equals(this.fth.getFirstFile().getLastModified()));
+		final XdevDate actualDate = this.fth.getFirstFile().getLastModified();
+		
+		Assert.assertTrue("Expected " + lastModif.getTimeInMillis() + " but got " + actualDate, lastModif.equals(actualDate));
 	}
 	
 	/**

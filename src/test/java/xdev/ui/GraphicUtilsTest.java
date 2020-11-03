@@ -140,6 +140,7 @@ public class GraphicUtilsTest
 	 * @throws IOException
 	 */
 	@Test(expected = IOException.class)
+	@Category(UITest.class)
 	public void testLoadImagePlainStringIOException() throws IOException
 	{
 		GraphicUtils.loadImagePlain(this.ROOT_PATH_RELATIVE + "1");
