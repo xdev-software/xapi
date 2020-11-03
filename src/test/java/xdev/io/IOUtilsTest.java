@@ -39,8 +39,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import xdev.junit.IORuntimeException;
+import xdev.test.UITest;
 import xdev.ui.XdevImage;
 
 
@@ -179,6 +181,7 @@ public class IOUtilsTest
 	 * Test for method {@link IOUtils#putClipboardString(String)}.
 	 */
 	@Test
+	@Category(UITest.class)
 	public void testClipboardString()
 	{
 		final String expected = "Hans";

@@ -41,8 +41,10 @@ import javax.swing.JDesktopPane;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import xdev.io.IOUtils;
+import xdev.test.UITest;
 
 
 /**
@@ -123,6 +125,7 @@ public class GraphicUtilsTest
 	 * @throws IOException
 	 */
 	@Test
+	@Category(UITest.class)
 	public void testLoadImagePlainString() throws IOException
 	{
 		final Image img = GraphicUtils.loadImagePlain(this.ROOT_PATH_RELATIVE);
@@ -137,6 +140,7 @@ public class GraphicUtilsTest
 	 * @throws IOException
 	 */
 	@Test(expected = IOException.class)
+	@Category(UITest.class)
 	public void testLoadImagePlainStringIOException() throws IOException
 	{
 		GraphicUtils.loadImagePlain(this.ROOT_PATH_RELATIVE + "1");
@@ -165,6 +169,7 @@ public class GraphicUtilsTest
 	 * @throws IOException
 	 */
 	@Test
+	@Category(UITest.class)
 	public void testLoadImageString() throws IOException
 	{
 		final BufferedImage bimg = GraphicUtils.loadImage(this.ROOT_PATH_RELATIVE);
@@ -178,6 +183,7 @@ public class GraphicUtilsTest
 	 * @throws IOException
 	 */
 	@Test(expected = IOException.class)
+	@Category(UITest.class)
 	public void testLoadImageStringIOException() throws IOException
 	{
 		GraphicUtils.loadImage(this.ROOT_PATH_RELATIVE + "1");
@@ -191,6 +197,7 @@ public class GraphicUtilsTest
 	 * @throws IOException
 	 */
 	@Test
+	@Category(UITest.class)
 	public void testLoadImageStringComponent() throws IOException
 	{
 		final XdevButton b = new XdevButton();
@@ -205,6 +212,7 @@ public class GraphicUtilsTest
 	 * @throws IOException
 	 */
 	@Test
+	@Category(UITest.class)
 	public void testLoadIcon() throws IOException
 	{
 		final Icon i = GraphicUtils.loadIcon(this.ROOT_PATH_RELATIVE);
@@ -217,6 +225,7 @@ public class GraphicUtilsTest
 	 * @throws IOException
 	 */
 	@Test(expected = IOException.class)
+	@Category(UITest.class)
 	public void testLoadIconIOException() throws IOException
 	{
 		GraphicUtils.loadIcon(this.ROOT_PATH_RELATIVE + "1");
@@ -227,6 +236,7 @@ public class GraphicUtilsTest
 	 * {@link xdev.ui.GraphicUtils#createBufferedImage(java.awt.Image)}.
 	 */
 	@Test
+	@Category(UITest.class)
 	public void testCreateBufferedImageImage()
 	{
 		final BufferedImage biTranslucent = GraphicUtils.createBufferedImage(this.ORIGINAL_IMAGEICON.getImage());
@@ -239,6 +249,7 @@ public class GraphicUtilsTest
 	 * .
 	 */
 	@Test
+	@Category(UITest.class)
 	public void testCreateBufferedImageImageBoolean()
 	{
 		final BufferedImage biTranslucent = GraphicUtils.createBufferedImage(
@@ -264,49 +275,6 @@ public class GraphicUtilsTest
 		final Image actual = GraphicUtils.createImageFromIcon(this.ORIGINAL_IMAGEICON);
 		assertNotNull(actual);
 		assertEquals(this.ORIGINAL_IMAGEICON.getImage(), actual);
-	}
-	
-	/**
-	 * Test method for
-	 * {@link xdev.ui.GraphicUtils#createImageURL(java.lang.String)}.
-	 */
-	@Test
-	public void testCreateImageURL()
-	{
-		// TODO (FHAE) implements test for createImageURL, javadoc is not
-		// available
-	}
-	
-	/**
-	 * Test method for {@link xdev.ui.GraphicUtils#loadImage(java.net.URL)}.
-	 */
-	@Test
-	public void testLoadImageURL()
-	{
-		// TODO (FHAE) implements test for createImageURL, javadoc is not
-		// available
-	}
-	
-	/**
-	 * Test method for
-	 * {@link xdev.ui.GraphicUtils#loadImage(java.net.URL, java.awt.Component)}.
-	 */
-	@Test
-	public void testLoadImageURLComponent()
-	{
-		// TODO (FHAE) implements test for createImageURL, javadoc is not
-		// available
-	}
-	
-	/**
-	 * Test method for
-	 * {@link xdev.ui.GraphicUtils#loadResIcon(java.lang.String)}.
-	 */
-	@Test
-	public void testLoadResIconString()
-	{
-		// TODO (FHAE) implements test for loadResIcon, javadoc is not
-		// available
 	}
 	
 	/**
@@ -349,15 +317,6 @@ public class GraphicUtilsTest
 		assertNotNull(img);
 		assertEquals(112, orgImg.getHeight(null));
 		assertEquals(484, img.getWidth(null) + 100);
-	}
-	
-	/**
-	 * Test method for {@link xdev.ui.GraphicUtils#waitFor(java.awt.Image)}.
-	 */
-	@Test
-	public void testWaitFor()
-	{
-		// Not implemented
 	}
 	
 }
