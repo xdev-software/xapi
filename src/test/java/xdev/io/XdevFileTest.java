@@ -105,6 +105,7 @@ public class XdevFileTest
 	 * Test for method {@link XdevFile#getLastModified()}.
 	 */
 	@Test
+	@Ignore("Works only on windows")
 	public void testGetLastModified()
 	{
 		this.fth.init();

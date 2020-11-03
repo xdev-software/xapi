@@ -36,6 +36,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import xdev.lang.AssertCopyable;
@@ -877,6 +878,7 @@ public class XdevDateTest
 	
 	
 	@Test
+	@Ignore("Works only in UTC+1")
 	public void testGetTime_defaultBehavior()
 	{
 		final Date javdate = testDatePast.getTime();

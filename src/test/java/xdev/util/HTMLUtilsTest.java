@@ -30,6 +30,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.awt.Font;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 
@@ -68,6 +69,7 @@ public class HTMLUtilsTest
 	 * Test method for {@link xdev.util.HTMLUtils#toStyle(java.awt.Font)}.
 	 */
 	@Test
+	@Ignore("Depends on locale")
 	public void testToStyleFont_defaultBehavior()
 	{
 		assertEquals(this.FONT_STRING, HTMLUtils.toStyle(this.FONT));
