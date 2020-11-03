@@ -18,10 +18,12 @@
 	</licenses>
 
 	<properties>
+		<javaVersion>1.8</javaVersion>
+	
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<license.licenseName>lgpl_v3</license.licenseName>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>${javaVersion}</maven.compiler.source>
+		<maven.compiler.target>${javaVersion}</maven.compiler.target>
 	</properties>
 
 
@@ -121,7 +123,7 @@
 									<version>3.5.4</version>
 								</requireMavenVersion>
 								<requireJavaVersion>
-									<version>1.8</version>
+									<version>${javaVersion}</version>
 								</requireJavaVersion>
 							</rules>
 						</configuration>
@@ -135,7 +137,8 @@
 				<configuration>
 					<compilerId>eclipse</compilerId>
 					<source>1.8</source>
-					<target>1.8</target>
+					<source>${javaVersion}</source>
+					<target>${javaVersion}</target>
 				</configuration>
 				<dependencies>
 					<dependency>
