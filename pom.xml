@@ -136,7 +136,6 @@
 				<version>3.8.1</version>
 				<configuration>
 					<compilerId>eclipse</compilerId>
-					<source>1.8</source>
 					<source>${javaVersion}</source>
 					<target>${javaVersion}</target>
 				</configuration>
