@@ -93,7 +93,7 @@ jobs:
              <version>${{ steps.version.outputs.release }}</version>
           </dependency>
           ```
-        draft: true
+        draft: false
         prerelease: false
 
   publish_central: # Publish the code to central
