@@ -32,7 +32,7 @@ We would absolutely love to get the community involved, and we welcome any form 
 ### Get in touch with the team
 
 Twitter: https://twitter.com/xdevsoftware<br/>
-Mail: info@xdev-software.de
+Mail: opensource@xdev-software.de
 
 ### Some ways to help:
 
