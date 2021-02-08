@@ -17,7 +17,7 @@ jobs:
         java-package: jdk+fx
 
     - name: Cache local Maven repository
-      uses: actions/cache@v2
+      uses: actions/cache@v2.1.4
       with:
         path: ~/.m2/repository
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
@@ -146,7 +146,7 @@ jobs:
         java-package: jdk+fx
 
     - name: Restore - Maven Cache
-      uses: actions/cache@v1
+      uses: actions/cache@v2.1.4
       with:
         path: ~/.m2/repository
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
