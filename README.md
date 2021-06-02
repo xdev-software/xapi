@@ -46,7 +46,9 @@ The XDEV Application Framework is released under [GNU Lesser General Public Lice
 View the [summary of all dependencies online](https://xdev-software.github.io/xapi/dependencies/)
 
 ## Releasing
-If the ``develop`` is ready for release, create a pull request to the ``master``-Branch and merge the changes
+Consider doing a [test-deployment](https://github.com/xdev-software/xapi/actions/workflows/test-deploy.yml?query=branch%3Adevelop) before actually releasing.
+
+If the ``develop`` is ready for release, create a pull request to the ``master``-Branch and merge the changes.
 
 When the release is finished do the following:
 * Merge the auto-generated PR (with the incremented version number) back into the ``develop``
