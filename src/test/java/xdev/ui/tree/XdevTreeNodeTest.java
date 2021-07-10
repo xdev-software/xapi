@@ -1,5 +1,11 @@
 package xdev.ui.tree;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
+
+import org.junit.Assert;
+
 /*-
  * #%L
  * XDEV Application Framework
@@ -23,6 +29,8 @@ package xdev.ui.tree;
  */
 
 import org.junit.Test;
+
+
 
 
 /**
@@ -51,6 +59,23 @@ public final class XdevTreeNodeTest
 	@Test
 	public void getSubTree(){
 		
-		this.createTestNodes().getSubTree();
+		List<TreeNode> nodes = this.createTestNodes().getSubTree();
+		
+		XdevTreeNode node1 = (XdevTreeNode) nodes.get(0);
+		XdevTreeNode node2 = (XdevTreeNode) nodes.get(1);
+		
+		Assert.assertEquals("root", node1.getCaption());
+		Assert.assertEquals("level1", node2.getCaption());
 	}
+	
+	
+	@Test
+	public void searchTreeNodes(){
+		
+		XdevTreeNode root = this.createTestNodes();
+		
+		List<TreeNode> nodes = root.searchNodes(null, "level1");
+		Assert.assertEquals("level1", ((XdevTreeNode)nodes.get(0)).getCaption());
+	}
+	
 }
