@@ -458,11 +458,11 @@ public class XdevTreeNode extends DefaultMutableTreeNode implements Copyable<Xde
 	 */
 	public <T extends TreeNode> List<T> getSubTree()
 	{
-		XdevList<T> subTree = new XdevList<T>();
+		XdevList<T> subTree = new XdevList<>();
 
 		@SuppressWarnings("unchecked")
 		// OK, because Enumeration comes untyped
-		Enumeration<T> postOrder = preorderEnumeration();
+		Enumeration<T> postOrder = (Enumeration<T>)preorderEnumeration();
 		while(postOrder.hasMoreElements())
 		{
 			subTree.add(postOrder.nextElement());
@@ -522,10 +522,10 @@ public class XdevTreeNode extends DefaultMutableTreeNode implements Copyable<Xde
 	public <T extends TreeNode> List<T> searchNodes(Object userObject, String caption)
 	{
 		List<T> list = null;
-		Enumeration<XdevTreeNode> e = breadthFirstEnumeration();
+		Enumeration<T> e = (Enumeration<T>)breadthFirstEnumeration();
 		while(e.hasMoreElements())
 		{
-			XdevTreeNode node = e.nextElement();
+			XdevTreeNode node = (XdevTreeNode)e.nextElement();
 			Object uo = node.getUserObject();
 
 			if((caption == null ? true : node.caption.equals(caption))
