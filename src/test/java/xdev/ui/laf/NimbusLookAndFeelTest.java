@@ -4,7 +4,7 @@ package xdev.ui.laf;
  * #%L
  * XDEV Application Framework
  * %%
- * Copyright (C) 2003 - 2020 XDEV Software
+ * Copyright (C) 2003 - 2021 XDEV Software
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -22,29 +22,20 @@ package xdev.ui.laf;
  * #L%
  */
 
-
 import javax.swing.UIManager;
 
+import org.junit.Assert;
+import org.junit.Test;
 
-public class NimbusLookAndFeel extends AbstractLookAndFeel
+public class NimbusLookAndFeelTest
 {
-	@Override
-	public void setLookAndFeel() throws LookAndFeelException
-	{
-		try
-		{
-			if (System.getProperty("java.version").startsWith("1.")) {
-				// Java 8 and below
-				UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-			}else {
-				// Java 9 and above
-				UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-			}
-			
-		}
-		catch(Exception e)
-		{
-			throw new LookAndFeelException(e);
-		}
+	
+	
+	@Test
+	public void setNimbus() throws LookAndFeelException {
+		
+		new NimbusLookAndFeel().setLookAndFeel();
+		Assert.assertEquals("Nimbus", UIManager.getLookAndFeel().getName());
+		
 	}
 }
