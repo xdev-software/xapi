@@ -5,7 +5,7 @@ updates:
   schedule:
     interval: daily
     # Run it at a specific time so that we don't get emails all day long
-    time: "0:00"
+    time: "00:00"
   open-pull-requests-limit: 10
   ignore:
   - dependency-name: "*"
@@ -18,5 +18,5 @@ updates:
   schedule:
     interval: daily
     # Run it at a specific time so that we don't get emails all day long
-    time: "0:00"
+    time: "00:00"
   open-pull-requests-limit: 10
