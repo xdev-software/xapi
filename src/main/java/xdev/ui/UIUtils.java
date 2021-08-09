@@ -73,7 +73,6 @@ import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
-import javafx.application.Platform;
 import xdev.Application;
 import xdev.io.XdevFile;
 import xdev.lang.LibraryMember;
@@ -2648,23 +2647,6 @@ public final class UIUtils implements ClientProperties
 		});
 	}
 
-
-	/**
-	 * Ensures that the runnable is executed in the Java FX thread.
-	 *
-	 * @since 5.0
-	 */
-	public static void runInJFXThread(final Runnable runnable)
-	{
-		if(Platform.isFxApplicationThread())
-		{
-			runnable.run();
-		}
-		else
-		{
-			Platform.runLater(runnable);
-		}
-	}
 
 
 	/**

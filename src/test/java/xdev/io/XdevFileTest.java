@@ -175,6 +175,7 @@ public class XdevFileTest
 	 * Test for method {@link XdevFile#getSystemImage()}.
 	 */
 	@Test
+	@Ignore
 	public void testGetSystemImage()
 	{
 		Assert.assertNull(this.fth.getFirstFile().getSystemImage());

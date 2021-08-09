@@ -5,7 +5,7 @@
 
 	<groupId>com.xdev-software</groupId>
 	<artifactId>xapi</artifactId>
-	<version>5.0.4-SNAPSHOT</version>
+	<version>6.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>XDEV Application Framework</name>
@@ -85,6 +85,11 @@
 	</distributionManagement>
 
 	<dependencies>
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>1.3.2</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -183,7 +188,7 @@
 					<dependency>
 						<groupId>org.codehaus.plexus</groupId>
 						<artifactId>plexus-compiler-eclipse</artifactId>
-						<version>2.8.5</version>
+						<version>2.8.8</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -246,7 +251,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<version>3.2.0</version>
+				<!-- version is intentional not up-to-date. There is a bug in 3.2.0 see 
+					https://issues.apache.org/jira/browse/MDEP-757 -->
+				<version>3.1.2</version>
 				<executions>
 					<execution>
 						<id>analyze</id>
@@ -260,11 +267,37 @@
 					</execution>
 				</executions>
 			</plugin>
-
 		</plugins>
 	</build>
 
 	<profiles>
+		<profile>
+			<id>xdev-ide</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<version>3.3.0</version>
+						<configuration>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+						</configuration>
+						<executions>
+							<execution>
+								<id>make-assembly</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
 		<profile>
 			<id>ossrh</id>
 			<build>
