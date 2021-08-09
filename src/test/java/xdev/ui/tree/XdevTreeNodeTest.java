@@ -31,8 +31,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
-
-
 /**
  * 
  * Tests regarding {@link XdevTreeNode}.
@@ -42,39 +40,39 @@ import org.junit.Test;
  */
 public final class XdevTreeNodeTest
 {
-	private XdevTreeNode createTestNodes(){
-		XdevTreeNode root = new XdevTreeNode("root");
+	private XdevTreeNode createTestNodes()
+	{
+		final XdevTreeNode root = new XdevTreeNode("root");
 		root.setCaption("root");
 		
-		XdevTreeNode level1 = new XdevTreeNode("level1");
+		final XdevTreeNode level1 = new XdevTreeNode("level1");
 		level1.setCaption("level1");
 		
 		root.add(level1);
 		
-		
 		return root;
 	}
 	
-	
 	@Test
-	public void getSubTree(){
+	public void getSubTree()
+	{
 		
-		List<TreeNode> nodes = this.createTestNodes().getSubTree();
+		final List<TreeNode> nodes = this.createTestNodes().getSubTree();
 		
-		XdevTreeNode node1 = (XdevTreeNode) nodes.get(0);
-		XdevTreeNode node2 = (XdevTreeNode) nodes.get(1);
+		final XdevTreeNode node1 = (XdevTreeNode)nodes.get(0);
+		final XdevTreeNode node2 = (XdevTreeNode)nodes.get(1);
 		
 		Assert.assertEquals("root", node1.getCaption());
 		Assert.assertEquals("level1", node2.getCaption());
 	}
 	
-	
 	@Test
-	public void searchTreeNodes(){
+	public void searchTreeNodes()
+	{
 		
-		XdevTreeNode root = this.createTestNodes();
+		final XdevTreeNode root = this.createTestNodes();
 		
-		List<TreeNode> nodes = root.searchNodes(null, "level1");
+		final List<TreeNode> nodes = root.searchNodes(null, "level1");
 		Assert.assertEquals("level1", ((XdevTreeNode)nodes.get(0)).getCaption());
 	}
 	

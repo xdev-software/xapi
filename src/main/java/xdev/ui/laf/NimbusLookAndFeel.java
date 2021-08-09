@@ -22,7 +22,6 @@ package xdev.ui.laf;
  * #L%
  */
 
-
 import javax.swing.UIManager;
 
 
@@ -33,16 +32,19 @@ public class NimbusLookAndFeel extends AbstractLookAndFeel
 	{
 		try
 		{
-			if (System.getProperty("java.version").startsWith("1.")) {
+			if(System.getProperty("java.version").startsWith("1."))
+			{
 				// Java 8 and below
 				UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-			}else {
+			}
+			else
+			{
 				// Java 9 and above
 				UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 			}
 			
 		}
-		catch(Exception e)
+		catch(final Exception e)
 		{
 			throw new LookAndFeelException(e);
 		}

@@ -27,12 +27,13 @@ import javax.swing.UIManager;
 import org.junit.Assert;
 import org.junit.Test;
 
+
 public class NimbusLookAndFeelTest
 {
 	
-	
 	@Test
-	public void setNimbus() throws LookAndFeelException {
+	public void setNimbus() throws LookAndFeelException
+	{
 		
 		new NimbusLookAndFeel().setLookAndFeel();
 		Assert.assertEquals("Nimbus", UIManager.getLookAndFeel().getName());
