@@ -272,10 +272,6 @@
 
 
 	<profiles>
-
-
-
-
 		<profile>
 			<id>xdev-ide</id>
 
@@ -283,7 +279,7 @@
 				<dependency>
 					<groupId>com.xdev-software</groupId>
 					<artifactId>xapi-fx</artifactId>
-					<version>1.0.0_java8-SNAPSHOT</version>
+					<version>1.0.0-java8-SNAPSHOT</version>
 				</dependency>
 			</dependencies>
 
@@ -301,8 +297,6 @@
 								</goals>
 								<configuration>
 									<createSourcesJar>true</createSourcesJar>
-									
-
 									<transformers>
 
 										<!-- we don't include the MANIFEST.MF files from other jar to avoid 
@@ -326,7 +320,6 @@
 							</execution>
 						</executions>
 					</plugin>
-
 
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
