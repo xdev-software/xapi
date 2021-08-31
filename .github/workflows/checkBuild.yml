@@ -69,7 +69,6 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: '8'
-        java-package: jdk
         cache: 'maven'
       
     - name: Build with Maven
