@@ -57,24 +57,3 @@ jobs:
       with:
         name: jars-java-${{ matrix.java }}
         path: target/*.jar
-
-  build_xdev_ide:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v2
-      
-    - name: Set up JDK
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'temurin'
-        java-version: '8'
-        cache: 'maven'
-      
-    - name: Build with Maven
-      run: mvn -B clean verify -Pxdev-ide
-      
-    - uses: actions/upload-artifact@v2
-      with:
-        name: jars-xdev-ide
-        path: target/*.jar
