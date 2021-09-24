@@ -7,6 +7,8 @@
 
 *This guide only applies if you use XAPI outside of the XDEV IDE.*
 
+*Feel free to contact us or open an issue if you have any questions.*
+
 #### Dependencies
 The Java FX part of the project was detached into [another repo](https://github.com/xdev-software/xapi-fx).
 
