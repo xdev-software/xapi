@@ -1,6 +1,5 @@
-[![Build](https://img.shields.io/github/workflow/status/xdev-software/xapi/Master%20CI)](https://github.com/xdev-software/xapi/actions?query=workflow%3A%22Master+CI%22)
 [![Latest version](https://img.shields.io/maven-central/v/com.xdev-software/xapi)](https://mvnrepository.com/artifact/com.xdev-software/xapi)
-[![Build Develop](https://img.shields.io/github/workflow/status/xdev-software/xapi/Develop%20CI/develop?label=build%20develop)](https://github.com/xdev-software/xapi/actions?query=workflow%3A%22Develop+CI%22+branch%3Adevelop)
+[![Build](https://img.shields.io/github/workflow/status/xdev-software/xapi/Check%20Build/develop)](https://github.com/xdev-software/xapi/actions/workflows/checkBuild.yml?query=branch%3Adevelop)
 [![javadoc](https://javadoc.io/badge2/com.xdev-software/xapi/javadoc.svg)](https://javadoc.io/doc/com.xdev-software/xapi) 
 
 # XDEV Application Framework
@@ -25,6 +24,11 @@ XDEV(-IDE) is a visual Java development environment for fast and easy applicatio
 
 The XDEV-IDE was license-free up to version 4 inclusive and is available for Windows, Linux and macOS. From version 5, the previously proprietary licensed additional modules are included in the IDE and the license of the entire product has been converted to a paid subscription model. The XDEV Application Framework, which represents the core of the RAD concept of XDEV and is part of every XDEV application, was released as open-source in 2008.
 
+## Migration Guide to version 6.0.0
+*This guide only applies if you use XAPI outside of the XDEV IDE.*
+
+[The guide](https://github.com/xdev-software/xapi/blob/develop/CHANGELOG.md#detached-javafx---migration-guide) is available in the [changelog](https://github.com/xdev-software/xapi/blob/develop/CHANGELOG.md#600).
+
 ## Contributing
 
 We would absolutely love to get the community involved, and we welcome any form of contributions – comments and questions on different communication channels, issues and pull request in the repositories, and anything that you build and share using our components.
@@ -32,7 +36,7 @@ We would absolutely love to get the community involved, and we welcome any form 
 ### Get in touch with the team
 
 Twitter: https://twitter.com/xdevsoftware<br/>
-Mail: info@xdev-software.de
+Mail: opensource@xdev-software.de
 
 ### Some ways to help:
 
@@ -45,8 +49,10 @@ We encourage you to read the [contribution instructions by GitHub](https://guide
 The XDEV Application Framework is released under [GNU Lesser General Public License version 3](https://www.gnu.org/licenses/lgpl-3.0.en.html) aka LGPL 3<br/>
 View the [summary of all dependencies online](https://xdev-software.github.io/xapi/dependencies/)
 
-## Releasing
-If the ``develop`` is ready for release, create a pull request to the ``master``-Branch and merge the changes
+## Releasing [![Build](https://img.shields.io/github/workflow/status/xdev-software/xapi/Release?label=Release)](https://github.com/xdev-software/xapi/actions/workflows/release.yml)
+Consider doing a [test-deployment](https://github.com/xdev-software/xapi/actions/workflows/test-deploy.yml?query=branch%3Adevelop) before actually releasing.
+
+If the ``develop`` is ready for release, create a pull request to the ``master``-Branch and merge the changes.
 
 When the release is finished do the following:
 * Merge the auto-generated PR (with the incremented version number) back into the ``develop``
