@@ -27,7 +27,7 @@ The XDEV-IDE was license-free up to version 4 inclusive and is available for Win
 ## Migration Guide to version 6.0.0
 *This guide only applies if you use XAPI outside of the XDEV IDE.*
 
-[The guide](https://github.com/xdev-software/xapi/blob/develop/CHANGELOG.md#detached-javafx---migration-guide) is available in the [changelogs](https://github.com/xdev-software/xapi/blob/develop/CHANGELOG.md#600)
+[The guide](https://github.com/xdev-software/xapi/blob/develop/CHANGELOG.md#detached-javafx---migration-guide) is available in the [changelog](https://github.com/xdev-software/xapi/blob/develop/CHANGELOG.md#600).
 
 ## Contributing
 
