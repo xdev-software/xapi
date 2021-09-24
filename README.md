@@ -24,7 +24,7 @@ XDEV(-IDE) is a visual Java development environment for fast and easy applicatio
 
 The XDEV-IDE was license-free up to version 4 inclusive and is available for Windows, Linux and macOS. From version 5, the previously proprietary licensed additional modules are included in the IDE and the license of the entire product has been converted to a paid subscription model. The XDEV Application Framework, which represents the core of the RAD concept of XDEV and is part of every XDEV application, was released as open-source in 2008.
 
-## Migration Guide to version 6.0.0
+## [Migration Guide to version 6+](https://github.com/xdev-software/xapi/blob/develop/CHANGELOG.md#600)
 *This guide only applies if you use XAPI outside of the XDEV IDE.*
 
 [The guide](https://github.com/xdev-software/xapi/blob/develop/CHANGELOG.md#detached-javafx---migration-guide) is available in the [changelog](https://github.com/xdev-software/xapi/blob/develop/CHANGELOG.md#600).
