@@ -112,7 +112,6 @@ public class SqlTimestamp extends SqlExpression
 			return parseLongTimestamp((Long)o);
 		}
 		
-		// (18.04.2010)XXX: What about QuerPart instance and default assembly in its .toString()?
 		String oString = o.toString();
 
 		if(oString.charAt(oString.length() - 1) == '\'') {
@@ -150,7 +149,6 @@ public class SqlTimestamp extends SqlExpression
 	 */
 	public SqlTimestamp(final Date date)
 	{
-		// (21.02.2010)TODO handle Timestamp ms
 		super(date);
 	}
 

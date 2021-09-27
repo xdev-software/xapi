@@ -171,6 +171,4 @@ public class JaCollections
 	{
 		return ints.min(COMPARE_INTEGERS);
 	}
-
-	// (15.09.2010)TODO more aggregates
 }

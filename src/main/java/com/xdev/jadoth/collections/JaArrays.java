@@ -649,9 +649,6 @@ public class JaArrays
 	}
 
 
-
-
-	// (03.09.2010 TM)TODO: removeDuplicates(): check for better algorithms for eq and id
 	@SuppressWarnings("unchecked")
 	public static final <T> T[] eqRemoveDuplicates(final T[] array)
 	{

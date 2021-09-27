@@ -119,7 +119,6 @@ public interface TableExpression extends Serializable
 			if(tableExpression instanceof SqlTableIdentity){
 				return (SqlTableIdentity)tableExpression;
 			}
-			// (19.04.2010 TM)XXX: Maybe call recursively for SELECTs ?
 			return null;
 		}
 

@@ -134,18 +134,5 @@ public class QueryExecutors<R>
 		}
 		return this.executionExecutors;
 	}
-	
-	// (22.07.2010 TM)FIXME: invokeAssembly
-//	public Object[] invokeAssembly(QueryExecutionContext<R> context)
-//	{
-//		if(this.preAssemblyExecutors == null) return null;
-//		
-//		for(QueryExecutionAspect<QueryExecutionContext<R>, R> executor : this.preAssemblyExecutors)
-//		{
-//			
-//		}
-//	}
-	
-	
 }
 

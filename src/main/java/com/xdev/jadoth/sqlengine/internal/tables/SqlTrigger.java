@@ -456,7 +456,6 @@ public class SqlTrigger implements StringBuilderAssemblable
 	 * @return the string builder
 	 */
 	protected StringBuilder assembleFOR_EACH(final StringBuilder sb) {
-		// (14.08.2009)TODO FOR EACH { ROW | STATEMENT }
 		return sb;
 	}
 

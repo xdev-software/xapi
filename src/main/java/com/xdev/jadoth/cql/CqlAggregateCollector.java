@@ -116,7 +116,6 @@ CqlAggregator<E,  XList<KeyValue<E, XList<E>>>, Collecting<E>>, Collecting<E>, S
 		return this;
 	}
 
-	// (30.09.2010)TODO change to ListMap<E, XList<E>>
 	@Override
 	public XList<KeyValue<E, XList<E>>> project(final Collecting<E> data)
 	{

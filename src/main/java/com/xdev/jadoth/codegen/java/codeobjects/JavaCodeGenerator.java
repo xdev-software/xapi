@@ -216,7 +216,6 @@ public interface JavaCodeGenerator
 		{
 			sb
 			.append(javaClass.getKeyword()).append(_).append(javaClass.getName());
-			// (11.07.2010)FIXME: assembleJavaClassDefinition
 		}
 
 		/**

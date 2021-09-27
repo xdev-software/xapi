@@ -74,7 +74,6 @@ public final class JaChars
 		final int targetCount,
 		int fromIndex
 	) {
-		// (14.08.2010)NOTE: Not sure why sourceOffset and fromIndex are two parameters
 		if(fromIndex >= sourceCount) {
 			return (targetCount == 0 ?sourceCount :-1);
 		}

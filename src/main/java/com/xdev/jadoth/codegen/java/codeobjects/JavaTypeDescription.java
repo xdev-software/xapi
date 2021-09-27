@@ -79,12 +79,6 @@ JavaTypeMemberDescription, JavaClassMemberDescription, JavaKeywordOwner, Type
 			if(c.isInterface()){
 				return new JavaInterfaceWrapper.Implementation(c);
 			}
-			if(c.isEnum()){
-				// (11.07.2010)FIXME: enum
-			}
-			if(c.isAnnotation()){
-				// (11.07.2010)FIXME: annotation
-			}
 			return new JavaClassWrapper.Implementation(c);
 		}
 		
@@ -325,9 +319,6 @@ JavaTypeMemberDescription, JavaClassMemberDescription, JavaKeywordOwner, Type
 		@Override
 		public int getNestingLevel()
 		{
-			// (30.06.2010 TM)TODO: JavaTypeDesciption.Implementation.getNestingLevel()
-//			if(this.owner == null) return 0;			
-//			return this.owner.getNestingLevel()+1;
 			return 0;
 		}
 

@@ -29,7 +29,6 @@ package com.xdev.jadoth.util.strings;
  * @param <A> the generic type
  * @author Thomas Muenz
  */
-// (21.08.2009 TM)NOTE: Should be AbstractStringBuilder actually, but that damn thing is not visible, wtf.
 public interface AppendableAssembable<A extends Appendable> 
 {
 	/**

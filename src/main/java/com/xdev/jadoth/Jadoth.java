@@ -635,10 +635,6 @@ public abstract class Jadoth
 		return arrayList;
 	}
 
-
-	// (26.08.2010 TM)XXX: overhaul higher order functions
-	// (26.08.2010 TM)XXX: filterMost / filterFew (start new list at minimal / same capacity)
-
 	public static <C extends Collection<T>, T> C filter(
 		final C sourceCollection, final Predicate<T> selectionPredicate, final C targetCollection
 	)
@@ -1247,7 +1243,6 @@ public abstract class Jadoth
 	{
 		return new NotCriterion<T>(criteria);
 	}
-	// (03.05.2010 TM)TODO: What about XOR and stuff?
 
 
 

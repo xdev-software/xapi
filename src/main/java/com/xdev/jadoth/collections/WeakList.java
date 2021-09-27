@@ -76,8 +76,6 @@ public class WeakList<E>
 	{
 		return this.list.addAll(new WeakRefView<E>(c));
 	}
-
-	// (06.09.2010 TM)FIXME: WeakList: decorate this.list
 }
 
 

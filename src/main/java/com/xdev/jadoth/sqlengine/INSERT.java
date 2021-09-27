@@ -165,10 +165,6 @@ public class INSERT extends TableQuery.Implementation implements ValueAssigningT
 
 
 
-	/* (13.11.2009 TM)TODO: INSERT row value constructors
-	 * (feature ID F641)
-	 * http://troels.arvin.dk/db/rdbms/#select
-	 */
 	/**
 	 * VALUES.
 	 *
@@ -217,7 +213,6 @@ public class INSERT extends TableQuery.Implementation implements ValueAssigningT
 	}
 
 
-	// (13.11.2009 TM)FIXME: rename
 	/**
 	 * Filter select.
 	 *
@@ -249,8 +244,6 @@ public class INSERT extends TableQuery.Implementation implements ValueAssigningT
 		//now finally, it's ensured that creating the filter is needed.
 
 		
-		// (15.04.2010 TM)TODO: Test new INSERT.filterSelect()
-
 		//the fields of the SELECT to be used. selectFilter being not null is already ensured above.
 		final String[] usedFields = this.selectFilter;
 		
@@ -272,7 +265,6 @@ public class INSERT extends TableQuery.Implementation implements ValueAssigningT
 		}
 		
 		//encapsulate the acutal selectQuery with the newly created filter-select.
-		// (27.08.2009 TM)XXX: bad performance, overhaul
 		this.cachedFilteredValueSelect = new SELECT().items(sb.toString()).FROM(this.valueSelect).setPacked(true);
 		this.modifiedSelectFilter = false;
 		return this.cachedFilteredValueSelect;

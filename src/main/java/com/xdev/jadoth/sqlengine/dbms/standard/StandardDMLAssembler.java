@@ -442,8 +442,7 @@ implements DbmsDMLAssembler<A>
 				if(i > 0){
 					sb.append(itemSeperator).append(indentItem);
 				}
-				// (27.08.2009 TM)XXX: CommaNewLine anschauen
-//				sb.append((SQL.config.list_CommaNewLine?"  ":_));
+
 				this.assembleSelectItem(selectItems.get(i), sb, indentLevel, flags);
 			}
 		}
@@ -498,7 +497,6 @@ implements DbmsDMLAssembler<A>
 			final String keyword = sqlClause.keyword();
 			if(keyword == null) break assembleKeyword;
 
-			// (12.11.2009 TM)XXX: Indentation BEFORE keyword check? (= always indent?)
 			indent(sb, indentLevel, isSingleLine(flags));
 			sb.append(keyword);
 			sb.append(isSingleLine(flags) ?_ :sqlClause.getKeyWordSeperator());
@@ -640,7 +638,6 @@ implements DbmsDMLAssembler<A>
 	{
 		sb = this.assembleSqlClauseHead(from, sb, indentLevel, flags);
 
-		// (27.08.2009 TM)TODO: von parent query holen
 		final String clauseSeperator = isSingleLine(flags) || isPacked(flags)?"":NEW_LINE;
 		final String lineSeperator = isSingleLine(flags)?" ":NEW_LINE;
 
@@ -653,7 +650,6 @@ implements DbmsDMLAssembler<A>
 			for(int i = 0, size = joins.size(); i < size; i++){
 				sb.append(lineSeperator).append(clauseSeperator);
 				this.assembleJOIN(parentQuery, joins.get(i), sb, indentLevel, passFlags);
-//				assembleObject(joins.get(i), this, sb, indentLevel, passFlags);
 			}
 		}
 
@@ -670,7 +666,6 @@ implements DbmsDMLAssembler<A>
 	{
 		sb = this.assembleSqlClauseHead(join, sb, indentLevel, flags);
 
-		// (27.08.2009 TM)TODO: von parent query holen
 		final String lineSeperator = isSingleLine(flags)?" ":NEW_LINE;
 
 		final int passFlags = flags | ASEXPRESSION;
@@ -1173,8 +1168,6 @@ implements DbmsDMLAssembler<A>
 
 
 
-	// (20.04.2010)XXX: Maybe decouple the two assembleQuotedExpression from assembleObject and move to SQLAssembler
-
 	/**
 	 * Assemble double quoted expression.
 	 *
@@ -1190,7 +1183,6 @@ implements DbmsDMLAssembler<A>
 		final DoubleQuotedExpression expression, final StringBuilder sb, final int indentLevel, final int flags
 	)
 	{
-		// (13.10.2010 TM)TODO: assembleDoubleQuotedExpression() hotfix, consolidate
 		final Object expressionObject = expression.getExpressionObject();
 		if(expressionObject == null){
 			return sb.append((String)null);
@@ -1218,7 +1210,6 @@ implements DbmsDMLAssembler<A>
 		final QuotedExpression expression, final StringBuilder sb, final int indentLevel, final int flags
 	)
 	{
-		// (13.10.2010 TM)TODO: assembleQuotedExpression() hotfix, consolidate
 		final Object expressionObject = expression.getExpressionObject();
 		if(expressionObject == null){
 			return sb.append((String)null);

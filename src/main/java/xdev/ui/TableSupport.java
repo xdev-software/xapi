@@ -428,19 +428,6 @@ public class TableSupport<T extends JTable & MasterDetailComponent<T>>
 				}
 			}
 		}
-
-		// if(isAutoLock())
-		// {
-		// // activate locking
-		// if(table instanceof ExtendedTable)
-		// {
-		// lockingSupport = new
-		// LockingSupport((ExtendedTable)table,getRowNumberTable(),
-		// (JTable)table);
-		// }
-		//
-		// }
-
 	}
 
 

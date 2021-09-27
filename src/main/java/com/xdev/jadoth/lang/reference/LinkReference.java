@@ -67,7 +67,6 @@ public interface LinkReference<T> extends LinkingReference<T>
 	
 	public LinkReference<T> insert(LinkReference<T> linkedReference);
 	public LinkReference<T> removeNext();
-	// (22.07.2010 TM)TODO: removeNext(i)
 		
 	
 	public class Implementation<T> extends Reference.Implementation<T> implements LinkReference<T>

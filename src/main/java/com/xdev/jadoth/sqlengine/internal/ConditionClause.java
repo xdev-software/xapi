@@ -99,11 +99,6 @@ public abstract class ConditionClause<C extends ConditionClause<C>> extends SqlC
 	@SuppressWarnings("unchecked")
 	protected C addCondition(final SqlBooleanArithmeticCondition conditionClause)
 	{
-		/* (02.12.2009 TM)FIXME: ConditionClause.addCondition for first condition
-		 * Refactor WHERE and HAVING to be HeadedConditionClause and handle firstCondition SpecialCase there.
-		 * Rename "SqlBooleanArithmeticCondition"
-		 * Make addCondition public again
-		 */
 		this.body.add(conditionClause);
 		return (C)this;
 	}

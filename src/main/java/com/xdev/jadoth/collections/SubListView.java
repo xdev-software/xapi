@@ -1634,5 +1634,4 @@ public class SubListView<E> implements XGettingList<E>
 	{
 		return null;
 	}
-// (01.10.2010)TODO SubListView
 }

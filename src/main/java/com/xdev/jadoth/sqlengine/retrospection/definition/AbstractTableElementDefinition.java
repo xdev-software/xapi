@@ -48,7 +48,6 @@ extends SqlEngineLabels implements JavaSourceDefinable
 	/** The Constant paddingChar. */
 	protected static final char paddingChar = ' ';
 
-	// (06.02.2010)NOTE: not final anymore because RetrospectionIdentifierMapper has to be able to set it
 	/** The name. */
 	protected String name;
 	

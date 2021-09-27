@@ -51,7 +51,6 @@ import com.xdev.jadoth.util.VarChar;
  */
 public class SubList<E> extends SubListAccessor<E> implements XList<E>
 {
-	// (15.09.2010 TM)FIXME: SubList
 	/*
 	 * Three variants:
 	 * SubListReadOnlyView implements XGettingList

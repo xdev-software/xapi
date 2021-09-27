@@ -658,13 +658,6 @@ public class SQL extends SqlEngineLabels
 		return new SqlBooleanTerm(expression, null, true);
 	}
 
-
-	// (15.09.2010 TM)TODO: SqlExpressionTerm
-//	public static final SqlExpressionTerm term(final Object expression)
-//	{
-//		return new SqlExpressionTerm(expression, null, true);
-//	}
-
 	/**
 	 * Wraps the given expression object as an {@link SqlCondition} instance.<br>
 	 * If the object itself is already a {@link SqlCondition}, it is returned right away.
@@ -723,7 +716,6 @@ public class SQL extends SqlEngineLabels
 	public static boolean connect(final ConnectionProvider<?> connectionProvider)
 		throws SQLEngineCouldNotConnectToDBException
 	{
-		// (01.03.2010 TM)TODO: throw exception instead
 		if(connectionProvider == null) return false;
 
 		setDefaultDBMS(connectionProvider.getDbmsAdaptor());
@@ -1538,7 +1530,6 @@ public class SQL extends SqlEngineLabels
 		/** The BITMAP. */
 		BITMAP(SQL.LANG.BITMAP, lookupSqlTableDefinitionMethodName(LABEL_METHOD_BitmapIndex)),
 
-		// (20.02.2010)TODO create proper "CONSTRAINT" type in the future...
 		/** The PRIMARYKEY. */
 		PRIMARYKEY(SQL.LANG.PRIMARY_KEY, lookupSqlTableDefinitionMethodName(LABEL_METHOD_PrimaryKey)),
 
@@ -1872,7 +1863,6 @@ public class SQL extends SqlEngineLabels
 		 * @return the string
 		 */
 		private static final String lengthedType(final DATATYPE type, final int length) {
-			// (10.02.2010 TM)XXX: muss hier nicht toDdlString() rein ?
 			return new StringBuilder(64).append(type).append(Punctuation.par).append(length).append(Punctuation.rap).toString();
 		}
 

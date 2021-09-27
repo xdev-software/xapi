@@ -440,8 +440,7 @@ public class Matrix<T>
 			 */
 			@Override
 			public boolean hasNext()
-			{				
-				// (20.05.2010 TM)TODO: hasNext() user plugin Object
+			{
 				if(this.hasNextChecker.hasNext()) return true;
 				
 				while(this.nextRow()){
@@ -457,7 +456,6 @@ public class Matrix<T>
 			@Override
 			public T next()
 			{
-				// (20.05.2010 TM)TODO: next() user plugin Object
 				try {
 					return this.currentArray[this.currentColIndex++];	
 				}

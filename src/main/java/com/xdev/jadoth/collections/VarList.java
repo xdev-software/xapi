@@ -515,8 +515,6 @@ public final class VarList<E> implements VarChar.Appendable //XList<E>
 			this.enlargeIndex();
 		}
 
-		// (10.09.2010 TM)TODO: trivial index special case?
-
 		// locate current entry at that index
 		int indexIndex = index>>this.indexSpanExponent;
 		Entry hopEntry = this.entryIndex[indexIndex];
@@ -619,7 +617,7 @@ public final class VarList<E> implements VarChar.Appendable //XList<E>
 			for(final int halfIndexIndex = indexLength>>1; i < halfIndexIndex; i++){
 				entryIndex[i] = entryIndex[i<<1]; //nice: null references don't cause any harm here
 			}
-			this.indexSize = i; // (10.09.2010 TM)XXX: or i-1 ?
+			this.indexSize = i;
 			while(i < indexLength){ // clear the rest of the index array
 				entryIndex[i++] = null;
 			}
@@ -703,7 +701,6 @@ public final class VarList<E> implements VarChar.Appendable //XList<E>
 	}
 
 
-	// (10.09.2010 TM)TODO: inline this method after finished implementation if tests show its not done automatically
 	private void releaseIntermediateEntry(final Entry entry)
 	{
 		// disjoin from list
@@ -822,8 +819,6 @@ public final class VarList<E> implements VarChar.Appendable //XList<E>
 		 * if exactely one hop was needed earlier, then skip the to-be-removed entry
 		 */
 		entryIndex[indexIndex] = neededHops == 1 ?entryToRemove.next :entryIndex[indexIndex].next;
-
-		// (10.09.2010 TM)XXX: trivial index check?
 
 		// update all remaining index entries (except last one special case)
 		final int lastIndexEntryIndex = this.indexSize-1;

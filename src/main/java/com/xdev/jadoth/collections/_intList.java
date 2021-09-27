@@ -31,6 +31,5 @@ package com.xdev.jadoth.collections;
  */
 public class _intList
 {
-	// (02.09.2010 TM)TODO: _intList (copy from GrowList when completed)
-
+	// Not implemented
 }

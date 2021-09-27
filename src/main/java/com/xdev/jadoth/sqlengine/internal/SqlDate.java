@@ -58,16 +58,4 @@ public class SqlDate extends SqlTimestamp {
 		return dbmsAdaptor.getDateFormatDATE();
 	}
 
-	
-	// (18.04.2010)FIXME: Fix SqlDate
-	
-//	/**
-//	 * Assemble.
-//	 * 
-//	 * @return the string
-//	 */
-//	public String assemble() {
-//		return this.getSqlDATE();
-//	}
-
 }

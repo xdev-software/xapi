@@ -67,7 +67,6 @@ public class DatabaseGateway<A extends DbmsAdaptor<A>>
 
 
 
-	// (01.10.2009)TODO 7 table validation
 	/** The validate table columns. */
 	public final boolean validateTableColumns = false;
 	
@@ -82,7 +81,6 @@ public class DatabaseGateway<A extends DbmsAdaptor<A>>
 
 
 	//DB Connection
-	// (13.11.2009 TM)NOTE: Probably obsolete or at least needs refactoring
 	/** The connection enabled. */
 	protected boolean connectionEnabled = false;
 
@@ -291,13 +289,11 @@ public class DatabaseGateway<A extends DbmsAdaptor<A>>
 	
 	public <R> R execute(final SqlExecutor<R> executor, final String sql) throws SQLEngineException
 	{
-//		return execute(this, null, null, sql, executor);
 		return execute(executor, new QueryEvent<R>(this, sql), null);
 	}
 
 
 
-	// (13.08.2009)TODO komisch, irgendwie anders machen
 	/**
 	 * Drop index.
 	 * 

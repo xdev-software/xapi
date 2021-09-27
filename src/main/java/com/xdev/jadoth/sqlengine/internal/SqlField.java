@@ -345,9 +345,6 @@ public class SqlField extends SqlColumn
 					}
 				}
 				else if(this.scale != null){
-					/* (09.11.2009 TM)TODO: NUMERIC(*,X) Overhaul
-					 * Is NOT SQL Standard, just Oracle-specific.
-					 */
 					// i.e.: "myNumColumn NUMERIC(*,2)"
 					sb.append("*").append(comma_).append(this.scale);
 				}

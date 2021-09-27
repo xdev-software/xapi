@@ -694,7 +694,6 @@ public class SELECT extends TableQuery.Implementation
 		return SQL.LANG.SELECT;
 	}
 
-	// (11.12.2009 TM)TODO: Alias Wrapperclass, ggf. SELECT dadurch zu interface machen ^^
 	/**
 	 * @param newAlias
 	 * @return
@@ -953,7 +952,6 @@ public class SELECT extends TableQuery.Implementation
 	 */
 	public SqlExpression toSqlExpression()
 	{
-		// (07.09.2010 TM)FIXME: subSelect transformation / flagging / whatever
 		/*
 		 * Or is this done in dmlAssembler.assembleExpression() ?
 		 * Also see TO DO note in class SelectItem

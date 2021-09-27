@@ -29,7 +29,6 @@ package com.xdev.jadoth.sqlengine.internal.interfaces;
  * 
  * @author Thomas Muenz
  */
-// (16.02.2010 TM)TODO: Maybe remove completely and wrap SELECT in SqlExpression instead. See SELECT.toExpression()
 public interface SelectItem
 {
 

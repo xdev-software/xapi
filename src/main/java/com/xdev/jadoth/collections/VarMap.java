@@ -89,9 +89,6 @@ public final class VarMap<K, V> implements Map<K, V>
 	private transient int threshold;
 	private float loadFactor;
 
-
-	// (07.09.2010)FIXME: rehash
-
 	public VarMap(final int tableSize, final float loadFactor, final MapEntryProvider entryProvider)
 	{
 		super();
@@ -156,7 +153,6 @@ public final class VarMap<K, V> implements Map<K, V>
 		}
 		catch(final ThrowRemoveFirstEntry e) {
 			table[hash & table.length-1] = entry.next();
-			// (08.09.2010 TM)TODO: Maybe create private internalContainsKey() ?
 			return this.containsKey(key);
 		}
 	}
@@ -403,7 +399,7 @@ public final class VarMap<K, V> implements Map<K, V>
 	 */
 	public void consolidate()
 	{
-		// (08.09.2010 TM)TODO: consolidate()
+		// Does nothing
 	}
 
 	public void setLoadFactor(final float loadFactor)
