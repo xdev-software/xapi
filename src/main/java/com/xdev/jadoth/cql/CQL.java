@@ -55,8 +55,6 @@ public class CQL
 		return new CqlProjector.Implementation<E>(initialCapactity);
 	}
 	
-	// (28.09.2010)TODO use VarList instead of GrowList with trivial index when completed
-	
 	public static final <E> GrowList<E> selectFrom(
 		final XGettingCollection<E> data, 
 		final Predicate<E> predicate
@@ -149,7 +147,6 @@ public class CQL
 			};
 		}
 		else {
-			// (28.09.2010)XXX: replace GrowList with Identity XSet when completed
 			final GrowList<E> keys = new GrowList<E>();
 			aggregationExtendedCondition = new Predicate<E>() {
 				@Override
@@ -297,11 +294,6 @@ public class CQL
 			}			
 		};
 	}
-	
-	// (28.09.2010)TODO NULLS FIRST / LAST ?
-	
-	
-	
 	
 	public static final <T> Equalator<T> groupBy(final Equalator<T>... distinction)
 	{

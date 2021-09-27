@@ -92,11 +92,6 @@ public abstract class QueryPart implements Serializable, Copyable
 	
 	public static final int DELIMIT_ALIASES   = getBitFlag(); // 2048
 
-
-	/* (17.02.2010 TM)TODO: ENCLOSESUBSELECT
-	 * Functions like "IN()" don't need to paranthesised SubSELECTs
-	 */
-
 	/** The Constant FLAGS_TAKEN. */
 	public static final int FLAGS_TAKEN = initFlagsTaken();
 
@@ -585,7 +580,6 @@ public abstract class QueryPart implements Serializable, Copyable
 
 
 
-	// (16.02.2010)TODO concatSqlExpressions StringBuilder?
 	/**
 	 * Concat sql expressions.
 	 *

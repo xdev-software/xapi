@@ -265,7 +265,6 @@ public class FROM extends SqlClause<JoinClause> implements TableClause, Joining<
 	 * @return
 	 * @see com.xdev.jadoth.sqlengine.internal.interfaces.JoinContainer#setJoins(java.util.List)
 	 */
-	// (19.05.2010 TM)XXX: Should joins collection really be set directly?
 	@Override
 	public FROM setJoins(final List<JoinClause> joins) 
 	{

@@ -66,7 +66,6 @@ public class AssignmentColumnsClause extends ListClauseEnclosed<SqlColumn>
 	protected AssignmentColumnsClause(final AssignmentColumnsClause copySource)
 	{
 		super(copySource);
-		// (19.05.2010 TM)FIXME: Iterable can't be cloned or copy-constructed. Replace!
 		this.columns = copySource.columns;
 	}
 

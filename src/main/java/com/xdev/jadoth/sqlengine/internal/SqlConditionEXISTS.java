@@ -47,7 +47,6 @@ public class SqlConditionEXISTS extends SqlCondition {
 	 * @param s the s
 	 */
 	public SqlConditionEXISTS(final SELECT s) {
-		// (14.02.2010)XXX: removed "brackets" super-class, test
 		super(s);
 	}
 

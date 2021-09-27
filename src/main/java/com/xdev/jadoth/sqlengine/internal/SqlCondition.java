@@ -198,7 +198,6 @@ public class SqlCondition extends QueryPart implements Copyable
 		).toString();
 	}
 
-	// (19.05.2010 TM)FIXME: remove uncopyable nextCondition
 	/**
 	 * Note that this does CANNOT copy the <code>nextCondition</code> internally due to consistency reasons.
 	 * @return a copy of this <code>SqlCondition</code> WITHOUT the code>nextCondition</code>

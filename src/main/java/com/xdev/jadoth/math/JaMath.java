@@ -254,7 +254,6 @@ public abstract class JaMath
 	 * @param decimals the number of decimals. May not be negative.
 	 * @return the normalized value for <code>value</code>
 	 */
-	// (23.08.2010 TM)FIXME: Ist das nicht doch einfach Rundung? Fix JavaDoc. Negative values?
 	public static final double round(final double value, int decimals)
 	{
 		switch (decimals){

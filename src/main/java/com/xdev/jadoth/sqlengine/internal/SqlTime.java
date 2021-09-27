@@ -59,14 +59,4 @@ public class SqlTime extends SqlTimestamp {
 		return dbmsAdaptor.getDateFormatTIME();
 	}
 
-	// (18.04.2010)FIXME: Fix SqlTime
-//	/**
-//	 * Assemble.
-//	 * 
-//	 * @return the string
-//	 */
-//	public String assemble() {
-//		return this.getSqlTIME();
-//	}
-
 }

@@ -133,8 +133,6 @@ public class MappingGenerator extends SqlEngineLabels
 	private List<String> createdClassesTableName = new ArrayList<String>();
 
 
-	// (17.02.2010 TM)FIXME: /!\ Only instantiate if compile is true and filetype is java!
-	// (17.02.2010 TM)FIXME: Split source file file writing and compiling. Compiler only compiles!
 	/** The rc. */
 	private JavaRuntimeCompiler rc = new JavaRuntimeCompiler();
 
@@ -308,7 +306,6 @@ public class MappingGenerator extends SqlEngineLabels
 		final String canonicalClassName = packagePath==null?className:packagePath+"."+className;
 
 		final File srcFile = new File(this.config.getSourceBaseDirectory(), subDir==null?"":subDir);
-		// (24.08.2009 TM)NOTE: javac anticipates bin baseDir and create packageDir on its own
 		final File binFile = compile?this.config.getBinaryBaseDirectory():null;
 
 		final String source = this.createSingletonIndexClassCode(packagePath, className);
@@ -389,7 +386,6 @@ public class MappingGenerator extends SqlEngineLabels
 	public MappingGenerator writeClassFile(final boolean compile)
 	{
 		final File srcFile = new File(this.config.getSourceBaseDirectory(), this.packageDir);
-		// (24.08.2009 TM)NOTE: javac anticipates bin baseDir and create packageDir on its own
 		final File binFile = compile?this.config.getBinaryBaseDirectory():null;
 		final String source = this.createSqlTableDefinitionCode();
 

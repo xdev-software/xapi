@@ -73,43 +73,6 @@ public class ThreadContext<E>
 	@SuppressWarnings("unchecked")
 	public E get()
 	{
-//		final Thread currentThread = Thread.currentThread();
-//		final int hash = System.identityHashCode(currentThread);
-//		final Entry[] table = this.table;
-//		Entry e = table[hash & LENGTH_MINUS_ONE];
-//		
-//		if(e == null){
-//			synchronized(table) {
-//				final E newInstance = this.instantiator.newInstance();
-//				table[hash & LENGTH_MINUS_ONE] = new Entry(currentThread, newInstance);
-//				return newInstance;	
-//			}			
-//		}
-//		
-//		synchronized(e) {
-//			Thread entryThread;
-//			do{
-//				if((entryThread = e.keyThreadRef.get()) == currentThread){
-//					return (E)e.value;				
-//				}
-//				else if(entryThread == null){
-//					table[hash & LENGTH_MINUS_ONE] = (e = e.next);
-//				}
-//			}
-//			while(e != null);
-//			
-//			
-//			Entry nextEntry;
-//			while((nextEntry = e.next) != null){
-//				
-//				if((entryThread = e.keyThreadRef.get()) == currentThread) break;
-//				e = e.next;
-//			}
-//			if(e != null){
-//				return (E)e.value;
-//			}
-//		}
-		// (20.09.2010)FIXME: ThreadContext
 		return null;		
 	}
 	

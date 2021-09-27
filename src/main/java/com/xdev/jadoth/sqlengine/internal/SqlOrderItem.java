@@ -61,7 +61,6 @@ public class SqlOrderItem extends QueryPart
 	
 	/** The Constant _NULLS_LAST. */
 	protected static final String _NULLS_LAST = _+"NULLS LAST";
-	// (19.05.2010 TM)XXX: Move SQL Keywords
 
 
 	///////////////////////////////////////////////////////////////////////////

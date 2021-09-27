@@ -133,7 +133,6 @@ public class SqlTableIdentity extends SqlQualifiedIdentityWithAlias implements T
 	@Override
 	public int hashCode()
 	{
-		// (12.06.2010)TODO SqlTableIdentity.hashCode()
 		return super.hashCode();
 	}
 	
@@ -169,7 +168,6 @@ public class SqlTableIdentity extends SqlQualifiedIdentityWithAlias implements T
 	 */
 	protected SqlTableIdentity getTopLevelInstance()
 	{
-		// (22.04.2010 TM)XXX: Check if really needed
 		return this;
 	}
 	

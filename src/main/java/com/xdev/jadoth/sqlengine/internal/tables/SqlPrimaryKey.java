@@ -78,7 +78,6 @@ public class SqlPrimaryKey extends SqlIndex
 		sb.append(_);
 		sb.append(this.name);
 		sb.append(_);
-		// (10.11.2009 TM)FIXME: will probably crash since change from String to enum
 		sb.append(this.type.toDdlString());
 		sb.append(_);
 		sb.append(par);

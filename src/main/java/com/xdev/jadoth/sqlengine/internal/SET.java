@@ -76,7 +76,6 @@ public class SET extends SqlClause<ColumnValueAssignment>
 	protected SET(final SET copySource)
 	{
 		super(copySource);
-		// (19.05.2010 TM)FIXME: Iterable can't be cloned or copy-constructed. Replace!
 		this.assignments = copySource.assignments;		
 	}
 

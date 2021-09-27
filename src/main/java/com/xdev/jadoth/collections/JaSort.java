@@ -110,17 +110,7 @@ public class JaSort
 	{
 		final boolean pivot = values[startIndex+endIndex >> 1];
 		int i = startIndex, j = endIndex;
-//		while(i <= j) {
-//			while(!values[i] && pivot) i++; //false is smaller than true
-//			while(values[j] && !pivot) j--; //true is greater then false
-//			if(i > j) break;
-//			final boolean t = values[i];
-//			values[i] = values[j];
-//			values[j] = t;
-//			i++;
-//			j--;
-//		}
-		// (30.08.2010 TM)XXX: Test if equivalent (should be)
+
 		if(pivot){
 			while(i <= j) {
 				while(!values[i]) i++;
