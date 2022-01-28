@@ -174,7 +174,7 @@ public final class IOUtils
 			isLinux = true;
 		}
 		
-		fileSystemView = FileSystemView.getFileSystemView();
+		
 		
 		numberFormat = NumberFormat.getNumberInstance();
 		numberFormat.setMaximumFractionDigits(2);
@@ -1466,7 +1466,7 @@ public final class IOUtils
 	 */
 	public static String getFileSize(File f)
 	{
-		if(!f.isDirectory() && !fileSystemView.isDrive(f))
+		if(!f.isDirectory() && !getFileSystemView().isDrive(f))
 		{
 			return getFileSize(f.length());
 		}
@@ -1899,4 +1899,17 @@ public final class IOUtils
 	{
 		NetUtils.uploadFile(destFolder,destFileName,maxSize,dialogTitle);
 	}
+	
+	/**
+	 * Lazy init of fileSystemView to prevent spawning an UI Thread prematurely
+	 * @return {@link FileSystemView}
+	 */
+	private static FileSystemView getFileSystemView() {
+		if (fileSystemView == null) {
+			fileSystemView = FileSystemView.getFileSystemView();
+		}
+		
+		return fileSystemView;
+	}
+	
 }
