@@ -22,7 +22,6 @@ package xdev.io;
  * #L%
  */
 
-
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -80,41 +79,36 @@ public final class IOUtils
 	{
 	}
 	
-	
-	
 	/**
 	 * Growing byte array
 	 */
 	private static class ByteBuffer
 	{
-		private byte[]	data;
-		private int		offset;
+		private byte[] data;
+		private int offset;
 		
-		
-		public ByteBuffer(int initialCapacity)
+		public ByteBuffer(final int initialCapacity)
 		{
-			data = new byte[initialCapacity];
-			offset = 0;
+			this.data = new byte[initialCapacity];
+			this.offset = 0;
 		}
 		
-		
-		public void add(byte[] b, int length)
+		public void add(final byte[] b, final int length)
 		{
-			if(offset + length >= data.length)
+			if(this.offset + length >= this.data.length)
 			{
-				byte[] newData = new byte[(data.length + length) * 2];
-				System.arraycopy(data,0,newData,0,offset);
-				data = newData;
+				final byte[] newData = new byte[(this.data.length + length) * 2];
+				System.arraycopy(this.data, 0, newData, 0, this.offset);
+				this.data = newData;
 			}
-			System.arraycopy(b,0,data,offset,length);
-			offset += length;
+			System.arraycopy(b, 0, this.data, this.offset, length);
+			this.offset += length;
 		}
-		
 		
 		public byte[] get()
 		{
-			byte[] b = new byte[offset];
-			System.arraycopy(data,0,b,0,offset);
+			final byte[] b = new byte[this.offset];
+			System.arraycopy(this.data, 0, b, 0, this.offset);
 			return b;
 		}
 	}
@@ -122,36 +116,36 @@ public final class IOUtils
 	/**
 	 * the operating system specific line separator.
 	 */
-	public static final String		LINE_SEPARATOR		= System.getProperty("line.separator");
+	public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 	
 	/**
 	 * an empty byte array.
 	 */
-	public final static byte[]		EMPTY_BYTE_ARRAY	= new byte[0];
+	public final static byte[] EMPTY_BYTE_ARRAY = new byte[0];
 	
 	/**
 	 * one megabyte.
 	 */
-	public final static long		ONE_MEGABYTE		= 1024 * 1024;
+	public final static long ONE_MEGABYTE = 1024 * 1024;
 	
 	/**
 	 * the Default buffer size.
 	 */
-	public final static int			DEFAULT_BUFFER_SIZE	= 1024 * 4;
+	public final static int DEFAULT_BUFFER_SIZE = 1024 * 4;
 	
-	private static boolean			isWindows;
-	private static boolean			isWindows9x;
-	private static boolean			isMac;
-	private static boolean			isLinux;
-	private static boolean			isSolaris;
+	private static boolean isWindows;
+	private static boolean isWindows9x;
+	private static boolean isMac;
+	private static boolean isLinux;
+	private static boolean isSolaris;
 	
-	private static FileSystemView	fileSystemView;
-	private static NumberFormat		numberFormat;
+	private static FileSystemView fileSystemView;
+	private static NumberFormat numberFormat;
 	
 	static
 	{
 		isWindows = isWindows9x = isMac = isLinux = isSolaris = false;
-		String system = System.getProperty("os.name").toLowerCase();
+		final String system = System.getProperty("os.name").toLowerCase();
 		if(system.indexOf("windows") >= 0)
 		{
 			isWindows = true;
@@ -164,8 +158,9 @@ public final class IOUtils
 		{
 			isMac = true;
 		}
-		else if(system.indexOf("solaris") >= 0 || system.indexOf("sun os") >= 0
-				|| system.indexOf("sunos") >= 0)
+		else if(system.indexOf("solaris") >= 0
+			|| system.indexOf("sun os") >= 0
+			|| system.indexOf("sunos") >= 0)
 		{
 			isSolaris = true;
 		}
@@ -174,13 +169,10 @@ public final class IOUtils
 			isLinux = true;
 		}
 		
-		
-		
 		numberFormat = NumberFormat.getNumberInstance();
 		numberFormat.setMaximumFractionDigits(2);
 		numberFormat.setMinimumFractionDigits(0);
 	}
-	
 	
 	/**
 	 * @return true, if operating system is Windows
@@ -190,7 +182,6 @@ public final class IOUtils
 		return isWindows;
 	}
 	
-	
 	/**
 	 * @return true, if operating system is Windows9x
 	 */
@@ -198,7 +189,6 @@ public final class IOUtils
 	{
 		return isWindows9x;
 	}
-	
 	
 	/**
 	 * @return true, if operating system is Mac OS
@@ -208,7 +198,6 @@ public final class IOUtils
 		return isMac;
 	}
 	
-	
 	/**
 	 * @return true, if operating system is Linux
 	 */
@@ -216,7 +205,6 @@ public final class IOUtils
 	{
 		return isLinux;
 	}
-	
 	
 	/**
 	 * @return true, if operating system is Solaris
@@ -229,16 +217,15 @@ public final class IOUtils
 	/**
 	 * Int-Identifier for a Windows Operating System.
 	 */
-	public final static int	WINDOWS	= 0;
+	public final static int WINDOWS = 0;
 	/**
 	 * Int-Identifier for a Mac Operating System.
 	 */
-	public final static int	MAC		= 1;
+	public final static int MAC = 1;
 	/**
 	 * Int Identifier for a Unix Operating System.
 	 */
-	public final static int	UNIX	= 2;
-	
+	public final static int UNIX = 2;
 	
 	/**
 	 * Returns the type of operating system this application is running on.
@@ -250,7 +237,7 @@ public final class IOUtils
 	 */
 	public final static int getOS()
 	{
-		String os = System.getProperty("os.name").toUpperCase();
+		final String os = System.getProperty("os.name").toUpperCase();
 		
 		if(os.indexOf("WINDOWS") >= 0)
 		{
@@ -266,7 +253,6 @@ public final class IOUtils
 		}
 	}
 	
-	
 	/**
 	 * Reads from a {@link InputStream} and returns the results as a byte array.
 	 * 
@@ -280,31 +266,30 @@ public final class IOUtils
 	 * 
 	 * @see #readData(InputStream, int)
 	 */
-	public static byte[] readData(InputStream in) throws IOException
+	public static byte[] readData(final InputStream in) throws IOException
 	{
 		try
 		{
-			ByteBuffer bb = new ByteBuffer(1024);
-			byte[] b = new byte[1024];
-			int read = in.read(b,0,1024);
-			bb.add(b,read);
+			final ByteBuffer bb = new ByteBuffer(1024);
+			final byte[] b = new byte[1024];
+			int read = in.read(b, 0, 1024);
+			bb.add(b, read);
 			while(read >= 0)
 			{
-				read = in.read(b,0,1024);
+				read = in.read(b, 0, 1024);
 				if(read >= 0)
 				{
-					bb.add(b,read);
+					bb.add(b, read);
 				}
 			}
 			
 			return bb.get();
 		}
-		catch(IOException e)
+		catch(final IOException e)
 		{
 			throw new IOException(e);
 		}
 	}
-	
 	
 	/**
 	 * Reads from a {@link InputStream} and returns the results as a byte array.
@@ -319,32 +304,31 @@ public final class IOUtils
 	 * @throws IOException
 	 *             if an I/O error occurs
 	 */
-	public static byte[] readData(InputStream in, int len) throws IOException
+	public static byte[] readData(final InputStream in, final int len) throws IOException
 	{
 		try
 		{
-			ByteBuffer bb = new ByteBuffer(len);
-			byte[] b = new byte[len];
-			int read = in.read(b,0,len);
-			bb.add(b,read);
+			final ByteBuffer bb = new ByteBuffer(len);
+			final byte[] b = new byte[len];
+			int read = in.read(b, 0, len);
+			bb.add(b, read);
 			while(read < len)
 			{
-				int i = in.read(b,0,len - read);
+				final int i = in.read(b, 0, len - read);
 				if(i >= 0)
 				{
-					bb.add(b,i);
+					bb.add(b, i);
 					read += i;
 				}
 			}
 			
 			return bb.get();
 		}
-		catch(IOException e)
+		catch(final IOException e)
 		{
 			throw new IOException(e);
 		}
 	}
-	
 	
 	/**
 	 * Reads the contents of the file <code>f</code> into a byte array.
@@ -357,19 +341,18 @@ public final class IOUtils
 	 * 
 	 * @since 3.1
 	 */
-	public static byte[] readData(File f) throws IOException
+	public static byte[] readData(final File f) throws IOException
 	{
-		FileInputStream in = new FileInputStream(f);
+		final FileInputStream in = new FileInputStream(f);
 		try
 		{
-			return readData(in,(int)f.length());
+			return readData(in, (int)f.length());
 		}
 		finally
 		{
 			closeSilent(in);
 		}
 	}
-	
 	
 	/**
 	 * Reads from a specified {@link InputStream} and stores results in a
@@ -388,11 +371,10 @@ public final class IOUtils
 	 * 
 	 * @see #readString(InputStream, boolean)
 	 */
-	public static String readString(InputStream is) throws IOException
+	public static String readString(final InputStream is) throws IOException
 	{
-		return readString(is,true);
+		return readString(is, true);
 	}
-	
 	
 	/**
 	 * Reads from a specified {@link InputStream} and stores results in a
@@ -412,11 +394,10 @@ public final class IOUtils
 	 * 
 	 * @see #readString(Reader, boolean)
 	 */
-	public static String readString(InputStream is, boolean close) throws IOException
+	public static String readString(final InputStream is, final boolean close) throws IOException
 	{
-		return readString(new InputStreamReader(is),close);
+		return readString(new InputStreamReader(is), close);
 	}
-	
 	
 	/**
 	 * Reads from a specified {@link InputStream} and stores results in a
@@ -437,11 +418,10 @@ public final class IOUtils
 	 * 
 	 * @see #readString(Reader, boolean)
 	 */
-	public static String readString(InputStream is, String charsetName) throws IOException
+	public static String readString(final InputStream is, final String charsetName) throws IOException
 	{
-		return readString(is,charsetName,true);
+		return readString(is, charsetName, true);
 	}
-	
 	
 	/**
 	 * Reads from a specified {@link InputStream} and stores results in a
@@ -460,12 +440,11 @@ public final class IOUtils
 	 *             if an I/O error occurs
 	 * @see #readString(InputStream, boolean)
 	 */
-	public static String readString(InputStream is, String charsetName, boolean close)
-			throws IOException
+	public static String readString(final InputStream is, final String charsetName, final boolean close)
+		throws IOException
 	{
-		return readString(new InputStreamReader(is,charsetName),close);
+		return readString(new InputStreamReader(is, charsetName), close);
 	}
-	
 	
 	/**
 	 * Reads from a specified {@link File} and stores results in a string. The
@@ -482,11 +461,10 @@ public final class IOUtils
 	 * 
 	 * @see #readString(Reader)
 	 */
-	public static String readString(File f) throws IOException
+	public static String readString(final File f) throws IOException
 	{
 		return readString(new FileReader(f));
 	}
-	
 	
 	/**
 	 * Reads from a specified reader and stores results in a string. The reader
@@ -504,20 +482,20 @@ public final class IOUtils
 	 * 
 	 * @see #readString(Reader, boolean)
 	 */
-	public static String readString(Reader in) throws IOException
+	public static String readString(final Reader in) throws IOException
 	{
-		return readString(in,true);
+		return readString(in, true);
 	}
-	
 	
 	/**
 	 * Reads from a specified reader and stores results in a string.
 	 * <p>
 	 * 
 	 * <pre>
-	 * FileReader	reader	= new FileReader(&quot;customer.txt&quot;);
-	 * 														String	result	= IOUtils.readString(
-	 * 																				reader,false);
+	 * FileReader reader = new FileReader(&quot;customer.txt&quot;);
+	 * String result = IOUtils.readString(
+	 * 	reader,
+	 * 	false);
 	 * </pre>
 	 * 
 	 * Creates a new FileReader <code>reader</code>, then the file is read and
@@ -532,13 +510,12 @@ public final class IOUtils
 	 * @throws IOException
 	 *             if an I/O error occurs
 	 */
-	public static String readString(Reader in, boolean close) throws IOException
+	public static String readString(final Reader in, final boolean close) throws IOException
 	{
-		CharArrayWriter out = new CharArrayWriter(DEFAULT_BUFFER_SIZE);
-		copy(in,out,close);
+		final CharArrayWriter out = new CharArrayWriter(DEFAULT_BUFFER_SIZE);
+		copy(in, out, close);
 		return out.toString();
 	}
-	
 	
 	/**
 	 * Reads from a specified {@link InputStream} and stores results in a
@@ -552,11 +529,10 @@ public final class IOUtils
 	 * @throws IOException
 	 *             if an I/O error occurs
 	 */
-	public static char[] readChars(InputStream is) throws IOException
+	public static char[] readChars(final InputStream is) throws IOException
 	{
-		return readChars(is,true);
+		return readChars(is, true);
 	}
-	
 	
 	/**
 	 * Reads from a specified {@link InputStream} and stores results in a
@@ -572,11 +548,10 @@ public final class IOUtils
 	 * @throws IOException
 	 *             if an I/O error occurs
 	 */
-	public static char[] readChars(InputStream is, boolean close) throws IOException
+	public static char[] readChars(final InputStream is, final boolean close) throws IOException
 	{
-		return readChars(new InputStreamReader(is),close);
+		return readChars(new InputStreamReader(is), close);
 	}
-	
 	
 	/**
 	 * Reads from a specified {@link InputStream} and stores results in a
@@ -593,11 +568,10 @@ public final class IOUtils
 	 * @throws IOException
 	 *             if an I/O error occurs
 	 */
-	public static char[] readChars(InputStream is, String charsetName) throws IOException
+	public static char[] readChars(final InputStream is, final String charsetName) throws IOException
 	{
-		return readChars(is,charsetName,true);
+		return readChars(is, charsetName, true);
 	}
-	
 	
 	/**
 	 * Reads from a specified {@link InputStream} and stores results in a
@@ -615,12 +589,11 @@ public final class IOUtils
 	 * @throws IOException
 	 *             if an I/O error occurs
 	 */
-	public static char[] readChars(InputStream is, String charsetName, boolean close)
-			throws IOException
+	public static char[] readChars(final InputStream is, final String charsetName, final boolean close)
+		throws IOException
 	{
-		return readChars(new InputStreamReader(is,charsetName),close);
+		return readChars(new InputStreamReader(is, charsetName), close);
 	}
-	
 	
 	/**
 	 * Reads from a specified {@link InputStream} and stores results in a
@@ -633,11 +606,10 @@ public final class IOUtils
 	 * @throws IOException
 	 *             if an I/O error occurs
 	 */
-	public static char[] readChars(File f) throws IOException
+	public static char[] readChars(final File f) throws IOException
 	{
 		return readChars(new FileReader(f));
 	}
-	
 	
 	/**
 	 * Reads from a specified {@link InputStream} and stores results in a
@@ -651,20 +623,20 @@ public final class IOUtils
 	 * @throws IOException
 	 *             if an I/O error occurs
 	 */
-	public static char[] readChars(Reader in) throws IOException
+	public static char[] readChars(final Reader in) throws IOException
 	{
-		return readChars(in,true);
+		return readChars(in, true);
 	}
-	
 	
 	/**
 	 * Reads from a specified reader and stores results in a character array.
 	 * <p>
 	 * 
 	 * <pre>
-	 * FileReader	reader	= new FileReader(&quot;customer.txt&quot;);
-	 * 														char[]	result	= IOUtils.readChars(reader,
-	 * 																				false);
+	 * FileReader reader = new FileReader(&quot;customer.txt&quot;);
+	 * char[] result = IOUtils.readChars(
+	 * 	reader,
+	 * 	false);
 	 * </pre>
 	 * 
 	 * Creates a new FileReader <code>reader</code> and
@@ -678,13 +650,12 @@ public final class IOUtils
 	 * @throws IOException
 	 *             if an I/O error occurs
 	 */
-	public static char[] readChars(Reader in, boolean close) throws IOException
+	public static char[] readChars(final Reader in, final boolean close) throws IOException
 	{
-		CharArrayWriter out = new CharArrayWriter(DEFAULT_BUFFER_SIZE);
-		copy(in,out,close);
+		final CharArrayWriter out = new CharArrayWriter(DEFAULT_BUFFER_SIZE);
+		copy(in, out, close);
 		return out.toCharArray();
 	}
-	
 	
 	/**
 	 * Copies in to out and closes both writers.
@@ -700,11 +671,10 @@ public final class IOUtils
 	 * @throws IOException
 	 *             if an I/O error occurs
 	 */
-	public static int copy(Reader in, Writer out) throws IOException
+	public static int copy(final Reader in, final Writer out) throws IOException
 	{
-		return copy(in,out,true);
+		return copy(in, out, true);
 	}
-	
 	
 	/**
 	 * Copies in to out and closes both reader and writer if <code>close</code>
@@ -720,16 +690,16 @@ public final class IOUtils
 	 * @throws IOException
 	 *             if an I/O error occurs
 	 */
-	public static int copy(Reader in, Writer out, boolean close) throws IOException
+	public static int copy(final Reader in, final Writer out, final boolean close) throws IOException
 	{
 		try
 		{
-			char[] buffer = new char[DEFAULT_BUFFER_SIZE];
+			final char[] buffer = new char[DEFAULT_BUFFER_SIZE];
 			int count = 0;
 			int n = 0;
 			while(-1 != (n = in.read(buffer)))
 			{
-				out.write(buffer,0,n);
+				out.write(buffer, 0, n);
 				count += n;
 			}
 			return count;
@@ -743,7 +713,6 @@ public final class IOUtils
 			}
 		}
 	}
-	
 	
 	/**
 	 * Copies in to out and closes both streams.
@@ -760,11 +729,10 @@ public final class IOUtils
 	 *             if an I/O error occurs
 	 * @since 3.1
 	 */
-	public static int copy(InputStream in, OutputStream out) throws IOException
+	public static int copy(final InputStream in, final OutputStream out) throws IOException
 	{
-		return copy(in,out,true);
+		return copy(in, out, true);
 	}
-	
 	
 	/**
 	 * Copies in to out and closes both streams if <code>close</code> is
@@ -781,16 +749,16 @@ public final class IOUtils
 	 *             if an I/O error occurs
 	 * @since 3.1
 	 */
-	public static int copy(InputStream in, OutputStream out, boolean close) throws IOException
+	public static int copy(final InputStream in, final OutputStream out, final boolean close) throws IOException
 	{
 		try
 		{
-			byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
+			final byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
 			int count = 0;
 			int n = 0;
 			while(-1 != (n = in.read(buffer)))
 			{
-				out.write(buffer,0,n);
+				out.write(buffer, 0, n);
 				count += n;
 			}
 			return count;
@@ -804,7 +772,6 @@ public final class IOUtils
 			}
 		}
 	}
-	
 	
 	/**
 	 * Copies <code>src</code> to <code>dest</code>.<br>
@@ -835,21 +802,21 @@ public final class IOUtils
 	 * 
 	 * @since 3.1
 	 */
-	public static File copy(File src, File dest) throws IOException
+	public static File copy(final File src, File dest) throws IOException
 	{
 		if(src.isDirectory())
 		{
 			ensureDir(dest);
 			
-			dest = new File(dest,src.getName());
+			dest = new File(dest, src.getName());
 			ensureDir(dest);
 			
-			File[] children = src.listFiles();
+			final File[] children = src.listFiles();
 			if(children != null)
 			{
-				for(File child : children)
+				for(final File child : children)
 				{
-					copy(child,dest);
+					copy(child, dest);
 				}
 			}
 		}
@@ -857,7 +824,7 @@ public final class IOUtils
 		{
 			if(dest.isDirectory())
 			{
-				dest = new File(dest,src.getName());
+				dest = new File(dest, src.getName());
 			}
 			
 			FileInputStream in = null;
@@ -868,10 +835,10 @@ public final class IOUtils
 				in = new FileInputStream(src);
 				out = new FileOutputStream(dest);
 				
-				FileChannel inChannel = in.getChannel();
-				FileChannel outChannel = out.getChannel();
+				final FileChannel inChannel = in.getChannel();
+				final FileChannel outChannel = out.getChannel();
 				
-				inChannel.transferTo(0,inChannel.size(),outChannel);
+				inChannel.transferTo(0, inChannel.size(), outChannel);
 			}
 			finally
 			{
@@ -885,7 +852,6 @@ public final class IOUtils
 		return dest;
 	}
 	
-	
 	/**
 	 * Ensures that <code>dir</code> is a existing directory, it will be created
 	 * if it doesn't exist.
@@ -897,13 +863,15 @@ public final class IOUtils
 	 * 
 	 * @since 3.1
 	 */
-	public static void ensureDir(File dir) throws IOException
+	public static void ensureDir(final File dir) throws IOException
 	{
 		if(!dir.exists())
 		{
 			if(!dir.mkdirs())
 			{
-				throw new IOException("directory \"" + dir.getAbsolutePath()
+				throw new IOException(
+					"directory \""
+						+ dir.getAbsolutePath()
 						+ "\" could not be created");
 			}
 		}
@@ -912,7 +880,6 @@ public final class IOUtils
 			throw new IOException("\"" + dir.getAbsolutePath() + "\" is not a directory");
 		}
 	}
-	
 	
 	/**
 	 * Creates a hash value for a {@link String} object using the specified
@@ -930,19 +897,18 @@ public final class IOUtils
 	 * @throws NoSuchAlgorithmException
 	 *             if an invalid algorithm was specified
 	 */
-	public static String createHash(@NotNull String str, String algorithm)
-			throws NoSuchAlgorithmException, NullPointerException
+	public static String createHash(@NotNull final String str, final String algorithm)
+		throws NoSuchAlgorithmException, NullPointerException
 	{
 		try
 		{
-			return createHash(str.getBytes("UTF8"),algorithm);
+			return createHash(str.getBytes("UTF8"), algorithm);
 		}
-		catch(UnsupportedEncodingException e)
+		catch(final UnsupportedEncodingException e)
 		{
-			return createHash(str.getBytes(),algorithm);
+			return createHash(str.getBytes(), algorithm);
 		}
 	}
-	
 	
 	/**
 	 * Creates a hash value for an array of <code>bytes</code> using the
@@ -960,11 +926,10 @@ public final class IOUtils
 	 * @throws NoSuchAlgorithmException
 	 *             if an invalid algorithm was specified
 	 */
-	public static String createHash(byte[] data, String algorithm) throws NoSuchAlgorithmException
+	public static String createHash(final byte[] data, final String algorithm) throws NoSuchAlgorithmException
 	{
-		return toHashString(MessageDigest.getInstance(algorithm).digest(data),algorithm);
+		return toHashString(MessageDigest.getInstance(algorithm).digest(data), algorithm);
 	}
-	
 	
 	/**
 	 * Creates a hash value an {@link InputStream} using the specified
@@ -982,22 +947,21 @@ public final class IOUtils
 	 * @throws NoSuchAlgorithmException
 	 *             if an invalid algorithm was specified
 	 */
-	public static String createHash(InputStream in, String algorithm)
-			throws NoSuchAlgorithmException, IOException
+	public static String createHash(final InputStream in, final String algorithm)
+		throws NoSuchAlgorithmException, IOException
 	{
-		MessageDigest md = MessageDigest.getInstance(algorithm);
+		final MessageDigest md = MessageDigest.getInstance(algorithm);
 		
-		byte[] buffer = new byte[1024];
+		final byte[] buffer = new byte[1024];
 		int read = in.read(buffer);
 		while(read != -1)
 		{
-			md.update(buffer,0,read);
+			md.update(buffer, 0, read);
 			read = in.read(buffer);
 		}
 		
-		return toHashString(md.digest(),algorithm);
+		return toHashString(md.digest(), algorithm);
 	}
-	
 	
 	/**
 	 * Converts the digest into a proper hash string.
@@ -1008,34 +972,33 @@ public final class IOUtils
 	 *            e.g. SHA, MD5, ...
 	 * @return The hash string for the specified digest.
 	 */
-	public static String toHashString(byte[] digest, String algorithm)
+	public static String toHashString(final byte[] digest, final String algorithm)
 	{
 		if(algorithm.equalsIgnoreCase("MD5"))
 		{
-			return String.format("%1$032x",new BigInteger(1,digest));
+			return String.format("%1$032x", new BigInteger(1, digest));
 		}
 		else if(algorithm.equalsIgnoreCase("SHA") || algorithm.startsWith("SHA-"))
 		{
-			StringBuffer sb = new StringBuffer();
+			final StringBuffer sb = new StringBuffer();
 			for(int i = 0, c = digest.length; i < c; i++)
 			{
-				sb.append(Integer.toString((digest[i] & 0xff) + 0x100,16).substring(1));
+				sb.append(Integer.toString((digest[i] & 0xff) + 0x100, 16).substring(1));
 			}
 			return sb.toString();
 		}
 		else
 		{
-			return new BigInteger(1,digest).toString(16);
+			return new BigInteger(1, digest).toString(16);
 		}
 	}
-	
 	
 	/**
 	 * Returns all root files on this system.
 	 * <p>
 	 * 
 	 * <pre>
-	 * XdevFile[]	roots	= IOUtils.getSystemRoots();
+	 * XdevFile[] roots = IOUtils.getSystemRoots();
 	 * </pre>
 	 * 
 	 * </p>
@@ -1050,12 +1013,11 @@ public final class IOUtils
 		return XdevFile.getSystemRoots();
 	}
 	
-	
 	/**
 	 * Returns a string from the system clipboard.
 	 * 
 	 * <pre>
-	 * String	string	= getClipboardString();
+	 * String string = getClipboardString();
 	 * </pre>
 	 * 
 	 * @return the {@link String} from the system clipboard or NULL if no
@@ -1069,25 +1031,23 @@ public final class IOUtils
 	{
 		try
 		{
-			Object o = getSysClipboardContent(DataFlavor.stringFlavor);
+			final Object o = getSysClipboardContent(DataFlavor.stringFlavor);
 			if(o != null)
 			{
 				return o.toString();
 			}
 		}
-		catch(Exception e)
-		{
-		}
+		catch(final Exception e)
+		{}
 		
 		return null;
 	}
-	
 	
 	/**
 	 * Returns a image from the system clipboard.
 	 * 
 	 * <pre>
-	 * XdevImage	img	= getClipboardImage();
+	 * XdevImage img = getClipboardImage();
 	 * </pre>
 	 * 
 	 * @return the {@link XdevImage} from the system clipboard or NULL if no
@@ -1100,7 +1060,7 @@ public final class IOUtils
 	{
 		try
 		{
-			Object o = getSysClipboardContent(DataFlavor.imageFlavor);
+			final Object o = getSysClipboardContent(DataFlavor.imageFlavor);
 			if(o != null)
 			{
 				if(o instanceof XdevImage)
@@ -1113,19 +1073,17 @@ public final class IOUtils
 				}
 			}
 		}
-		catch(Exception e)
-		{
-		}
+		catch(final Exception e)
+		{}
 		
 		return null;
 	}
-	
 	
 	/**
 	 * Returns the file list from the system clipboard
 	 * 
 	 * <pre>
-	 * XdevFile[]	files	= getClipboardFileList();
+	 * XdevFile[] files = getClipboardFileList();
 	 * </pre>
 	 * 
 	 * @see #getClipboardFileList()
@@ -1136,12 +1094,12 @@ public final class IOUtils
 	{
 		try
 		{
-			Object o = getSysClipboardContent(DataFlavor.javaFileListFlavor);
+			final Object o = getSysClipboardContent(DataFlavor.javaFileListFlavor);
 			if(o != null && o instanceof java.util.List)
 			{
-				List files = (List)o;
-				int c = files.size();
-				List<XdevFile> list = new ArrayList(c);
+				final List files = (List)o;
+				final int c = files.size();
+				final List<XdevFile> list = new ArrayList(c);
 				for(int i = 0; i < c; i++)
 				{
 					list.add(new XdevFile((File)files.get(i)));
@@ -1149,27 +1107,24 @@ public final class IOUtils
 				return list.toArray(new XdevFile[list.size()]);
 			}
 		}
-		catch(Exception e)
-		{
-		}
+		catch(final Exception e)
+		{}
 		
 		return null;
 	}
 	
-	
-	private static Object getSysClipboardContent(DataFlavor flavor) throws Exception
+	private static Object getSysClipboardContent(final DataFlavor flavor) throws Exception
 	{
-		Clipboard cp = Toolkit.getDefaultToolkit().getSystemClipboard();
+		final Clipboard cp = Toolkit.getDefaultToolkit().getSystemClipboard();
 		return cp.getContents(Application.getContainer()).getTransferData(flavor);
 	}
-	
 	
 	/**
 	 * Store a string in the system clipboard.
 	 * <p>
 	 * 
 	 * <pre>
-	 * boolean	success	= IOUtils.putClipboardString(&quot;store me&quot;);
+	 * boolean success = IOUtils.putClipboardString(&quot;store me&quot;);
 	 * </pre>
 	 * 
 	 * A string is stored in the clipboard.
@@ -1184,21 +1139,19 @@ public final class IOUtils
 	 * @see #putClipboardFileList(List)
 	 * @see #putClipboardString(String)
 	 */
-	public static boolean putClipboardString(String str)
+	public static boolean putClipboardString(final String str)
 	{
-		return putSystemClipboardContent(str,DataFlavor.stringFlavor);
+		return putSystemClipboardContent(str, DataFlavor.stringFlavor);
 	}
-	
 	
 	/**
 	 * Store a {@link Image} in the system clipboard.
 	 * <p>
 	 * 
 	 * <pre>
-	 * ArrayList	fileList	= createList();
-	 * 										Image	image	= createImage();
-	 * 																			boolean	success	= IOUtils
-	 * 																									.putClipboardImage(image);
+	 * ArrayList fileList = createList();
+	 * Image image = createImage();
+	 * boolean success = IOUtils.putClipboardImage(image);
 	 * </pre>
 	 * 
 	 * A image is created and stored in the clipboard.
@@ -1213,11 +1166,10 @@ public final class IOUtils
 	 * @see #putClipboardFileList(List)
 	 * @see #putClipboardString(String)
 	 */
-	public static boolean putClipboardImage(Image image)
+	public static boolean putClipboardImage(final Image image)
 	{
-		return putSystemClipboardContent(image,DataFlavor.imageFlavor);
+		return putSystemClipboardContent(image, DataFlavor.imageFlavor);
 	}
-	
 	
 	/**
 	 * Store a list of files in the system clipboard.
@@ -1240,66 +1192,66 @@ public final class IOUtils
 	 * @see #putClipboardImage(Image)
 	 * @see #putClipboardString(String)
 	 */
-	public static boolean putClipboardFileList(List<? extends File> files)
+	public static boolean putClipboardFileList(final List<? extends File> files)
 	{
 		boolean success = false;
 		if(files.size() > 0)
 		{
-			success = putSystemClipboardContent(files,DataFlavor.javaFileListFlavor);
+			success = putSystemClipboardContent(files, DataFlavor.javaFileListFlavor);
 		}
 		
 		return success;
 	}
 	
-	
 	private static boolean putSystemClipboardContent(final Object data, final DataFlavor flavor)
 	{
 		try
 		{
-			Clipboard cp = Toolkit.getDefaultToolkit().getSystemClipboard();
+			final Clipboard cp = Toolkit.getDefaultToolkit().getSystemClipboard();
 			final DataFlavor[] flavors = new DataFlavor[]{flavor};
 			cp.setContents(new Transferable()
 			{
-				public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException,
-						IOException
+				@Override
+				public Object getTransferData(final DataFlavor flavor) throws UnsupportedFlavorException,
+					IOException
 				{
 					return data;
 				}
 				
-				
+				@Override
 				public DataFlavor[] getTransferDataFlavors()
 				{
 					return flavors;
 				}
 				
-				
-				public boolean isDataFlavorSupported(DataFlavor df)
+				@Override
+				public boolean isDataFlavorSupported(final DataFlavor df)
 				{
 					return flavor.equals(df);
 				}
-			},new ClipboardOwner()
+			}, new ClipboardOwner()
 			{
-				public void lostOwnership(Clipboard clipboard, Transferable contents)
+				@Override
+				public void lostOwnership(final Clipboard clipboard, final Transferable contents)
 				{
 				}
 			});
 			
 			return true;
 		}
-		catch(Exception e)
+		catch(final Exception e)
 		{
 			return false;
 		}
 	}
-	
 	
 	/**
 	 * Extracts the name of a file from a path.
 	 * <p>
 	 * 
 	 * <pre>
-	 * String	path	= &quot;c:\\one\two\\filename.txt&quot;;
-	 * 												String	filename	= IOUtils.getFileName(path);
+	 * String path = &quot;c:\\one\two\\filename.txt&quot;;
+	 * String filename = IOUtils.getFileName(path);
 	 * </pre>
 	 * 
 	 * Variable filename contains "filename.txt" after the call.
@@ -1325,7 +1277,7 @@ public final class IOUtils
 		{
 			if(i == path.length() - 1)
 			{
-				path = path.substring(0,i - 1);
+				path = path.substring(0, i - 1);
 				i = path.lastIndexOf('/');
 			}
 			
@@ -1337,7 +1289,7 @@ public final class IOUtils
 		{
 			if(i == path.length() - 1)
 			{
-				path = path.substring(0,i - 1);
+				path = path.substring(0, i - 1);
 				i = path.lastIndexOf('\\');
 			}
 			
@@ -1346,7 +1298,6 @@ public final class IOUtils
 		
 		return path;
 	}
-	
 	
 	/**
 	 * Returns the prefix of a filename (filename without extension) of a
@@ -1363,19 +1314,18 @@ public final class IOUtils
 	 * @throws NullPointerException
 	 *             if file is null
 	 */
-	public static String getPrefix(@NotNull File file) throws NullPointerException
+	public static String getPrefix(@NotNull final File file) throws NullPointerException
 	{
 		return getPrefix(file.getName());
 	}
-	
 	
 	/**
 	 * Returns the prefix of a <code>filename</code> (filename without
 	 * extension). <blockquote>
 	 * 
 	 * <pre>
-	 * String	filename	= &quot;filename.txt&quot;;
-	 * 										String	prefix	= IOUtils.getPrefix(filename);
+	 * String filename = &quot;filename.txt&quot;;
+	 * String prefix = IOUtils.getPrefix(filename);
 	 * </pre>
 	 * 
 	 * </blockquote>
@@ -1391,17 +1341,16 @@ public final class IOUtils
 	 * @throws NullPointerException
 	 *             if filename is null
 	 */
-	public static String getPrefix(String fileName) throws NullPointerException
+	public static String getPrefix(final String fileName) throws NullPointerException
 	{
-		int i = fileName.lastIndexOf('.');
+		final int i = fileName.lastIndexOf('.');
 		if(i >= 0)
 		{
-			return fileName.substring(0,i);
+			return fileName.substring(0, i);
 		}
 		
 		return fileName;
 	}
-	
 	
 	/**
 	 * Returns the suffix of a filename (Extension without filename) of a
@@ -1416,11 +1365,10 @@ public final class IOUtils
 	 * @throws NullPointerException
 	 *             if file is null
 	 */
-	public static String getSuffix(@NotNull File file) throws NullPointerException
+	public static String getSuffix(@NotNull final File file) throws NullPointerException
 	{
 		return getSuffix(file.getName());
 	}
-	
 	
 	/**
 	 * Returns the suffix of a <code>filename</code> (Extension without
@@ -1428,8 +1376,8 @@ public final class IOUtils
 	 * <p>
 	 * 
 	 * <pre>
-	 * String	filename	= &quot;filename.txt&quot;;
-	 * 										String	suffix	= IOUtils.getSuffix(filename);
+	 * String filename = &quot;filename.txt&quot;;
+	 * String suffix = IOUtils.getSuffix(filename);
 	 * </pre>
 	 * 
 	 * suffix contains ".txt" after the call.
@@ -1441,9 +1389,9 @@ public final class IOUtils
 	 * @throws NullPointerException
 	 *             if filename is null
 	 */
-	public static String getSuffix(@NotNull String fileName) throws NullPointerException
+	public static String getSuffix(@NotNull final String fileName) throws NullPointerException
 	{
-		int i = fileName.lastIndexOf('.');
+		final int i = fileName.lastIndexOf('.');
 		if(i >= 0)
 		{
 			return fileName.substring(i);
@@ -1451,7 +1399,6 @@ public final class IOUtils
 		
 		return fileName;
 	}
-	
 	
 	/**
 	 * The human readable file size for the file <code>f</code>.
@@ -1464,7 +1411,7 @@ public final class IOUtils
 	 * 
 	 * @see #getFileSize(long)
 	 */
-	public static String getFileSize(File f)
+	public static String getFileSize(final File f)
 	{
 		if(!f.isDirectory() && !getFileSystemView().isDrive(f))
 		{
@@ -1473,7 +1420,6 @@ public final class IOUtils
 		
 		return "";
 	}
-	
 	
 	/**
 	 * Parses a filesize into a human readable form.
@@ -1484,7 +1430,7 @@ public final class IOUtils
 	 *         E.g: n=1024 -> 1 KB
 	 */
 	
-	public static String getFileSize(long n)
+	public static String getFileSize(final long n)
 	{
 		try
 		{
@@ -1515,12 +1461,11 @@ public final class IOUtils
 				}
 			}
 		}
-		catch(Exception e)
+		catch(final Exception e)
 		{
 			return "" + n;
 		}
 	}
-	
 	
 	/**
 	 * Closes <code>c</code> silently, throws no exception whether
@@ -1529,7 +1474,7 @@ public final class IOUtils
 	 * @param c
 	 *            The {@link Closeable} to be closed
 	 */
-	public static void closeSilent(Closeable c)
+	public static void closeSilent(final Closeable c)
 	{
 		if(c != null)
 		{
@@ -1537,12 +1482,10 @@ public final class IOUtils
 			{
 				c.close();
 			}
-			catch(IOException e)
-			{
-			}
+			catch(final IOException e)
+			{}
 		}
 	}
-	
 	
 	/**
 	 * Closes <code>s</code> silently, throws no exception whether
@@ -1552,7 +1495,7 @@ public final class IOUtils
 	 *            The {@link Socket} to be closed
 	 */
 	
-	public static void closeSilent(ServerSocket s)
+	public static void closeSilent(final ServerSocket s)
 	{
 		if(s != null)
 		{
@@ -1560,12 +1503,10 @@ public final class IOUtils
 			{
 				s.close();
 			}
-			catch(IOException e)
-			{
-			}
+			catch(final IOException e)
+			{}
 		}
 	}
-	
 	
 	/**
 	 * Closes <code>s</code> silently, throws no exception whether
@@ -1575,7 +1516,7 @@ public final class IOUtils
 	 *            The {@link Socket} to be closed
 	 */
 	
-	public static void closeSilent(Socket s)
+	public static void closeSilent(final Socket s)
 	{
 		if(s != null)
 		{
@@ -1583,12 +1524,10 @@ public final class IOUtils
 			{
 				s.close();
 			}
-			catch(IOException e)
-			{
-			}
+			catch(final IOException e)
+			{}
 		}
 	}
-	
 	
 	/**
 	 * Closes <code>zf</code> silently, throws no exception whether
@@ -1598,7 +1537,7 @@ public final class IOUtils
 	 *            The {@link ZipFile} to be closed
 	 */
 	
-	public static void closeSilent(ZipFile zf)
+	public static void closeSilent(final ZipFile zf)
 	{
 		if(zf != null)
 		{
@@ -1606,12 +1545,10 @@ public final class IOUtils
 			{
 				zf.close();
 			}
-			catch(IOException e)
-			{
-			}
+			catch(final IOException e)
+			{}
 		}
 	}
-	
 	
 	/**
 	 * Searches for a resource in the application's classpath and the
@@ -1631,12 +1568,11 @@ public final class IOUtils
 	 * @deprecated typo, use {@link #findResource(String)}
 	 */
 	@Deprecated
-	public static InputStream findRessource(String relativePath) throws IOException,
-			FileNotFoundException
+	public static InputStream findRessource(final String relativePath) throws IOException,
+		FileNotFoundException
 	{
 		return findResource(relativePath);
 	}
-	
 	
 	/**
 	 * Searches for a resource in the application's classpath and the
@@ -1656,11 +1592,11 @@ public final class IOUtils
 	 * @since 3.1
 	 */
 	public static InputStream findResource(String relativePath) throws IOException,
-			FileNotFoundException
+		FileNotFoundException
 	{
-		relativePath = relativePath.replace('\\','/');
+		relativePath = relativePath.replace('\\', '/');
 		
-		ClassLoader classLoader = IOUtils.class.getClassLoader();
+		final ClassLoader classLoader = IOUtils.class.getClassLoader();
 		InputStream in = classLoader.getResourceAsStream(relativePath);
 		if(in == null)
 		{
@@ -1684,13 +1620,13 @@ public final class IOUtils
 			return new FileInputStream(f);
 		}
 		
-		String projectHome = System.getProperty("project.home",null);
+		final String projectHome = System.getProperty("project.home", null);
 		if(projectHome != null)
 		{
-			StringBuilder path = new StringBuilder();
+			final StringBuilder path = new StringBuilder();
 			if(projectHome.endsWith("/"))
 			{
-				path.append(projectHome,0,projectHome.length() - 1);
+				path.append(projectHome, 0, projectHome.length() - 1);
 			}
 			else
 			{
@@ -1712,7 +1648,6 @@ public final class IOUtils
 		throw new FileNotFoundException(relativePath);
 	}
 	
-	
 	// ===============================================================================
 	// -------------------------------------------------------------------------------
 	// Deprecated and moved stuff
@@ -1726,7 +1661,8 @@ public final class IOUtils
 	 * @deprecated use {@link Application#showDocument(URL,String)} or
 	 *             {@link DesktopUtils#browse(String)}
 	 */
-	public static void showURL(String url, String target) throws IOException
+	@Deprecated
+	public static void showURL(final String url, String target) throws IOException
 	{
 		if(target == null)
 		{
@@ -1735,14 +1671,13 @@ public final class IOUtils
 		
 		if(Application.isApplet())
 		{
-			showDocument(url,target);
+			showDocument(url, target);
 		}
 		else
 		{
 			launchBrowser(url);
 		}
 	}
-	
 	
 	/**
 	 * Opens the url in the currently running browser if the Application is an
@@ -1752,11 +1687,11 @@ public final class IOUtils
 	 *             {@link DesktopUtils#browse(String)}
 	 */
 	@Deprecated
-	public static void launchBrowser(String url) throws IOException
+	public static void launchBrowser(final String url) throws IOException
 	{
 		if(Application.isApplet())
 		{
-			showDocument(url,"_blank");
+			showDocument(url, "_blank");
 		}
 		else
 		{
@@ -1764,12 +1699,11 @@ public final class IOUtils
 		}
 	}
 	
-	
 	/**
 	 * @deprecated use {@link Application#showDocument(URL, String)}
 	 */
 	@Deprecated
-	public static void showDocument(String url, String target) throws IOException
+	public static void showDocument(String url, final String target) throws IOException
 	{
 		try
 		{
@@ -1782,36 +1716,35 @@ public final class IOUtils
 			}
 			else
 			{
-				u = new URL(Application.getContainer().getCodeBase(),url);
+				u = new URL(Application.getContainer().getCodeBase(), url);
 			}
 			
 			if(target != null && target.length() > 0)
 			{
-				Application.getContainer().showDocument(u,target);
+				Application.getContainer().showDocument(u, target);
 			}
 			else
 			{
 				Application.getContainer().showDocument(u);
 			}
 		}
-		catch(IOException ioe)
+		catch(final IOException ioe)
 		{
 			throw ioe;
 		}
-		catch(Exception e)
+		catch(final Exception e)
 		{
 			throw new IOException(e.getMessage());
 		}
 	}
-	
 	
 	/**
 	 * Creates a url encoded representation of the specified string.
 	 * <p>
 	 * 
 	 * <pre>
-	 * String	input	= &quot;hello hello&quot;;
-	 * 									String	urlString	= IOUtils.createURLString(input);
+	 * String input = &quot;hello hello&quot;;
+	 * String urlString = IOUtils.createURLString(input);
 	 * </pre>
 	 * 
 	 * the input string "hello hello" get url encoded, which results in
@@ -1824,11 +1757,10 @@ public final class IOUtils
 	 * @deprecated Use {@link NetUtils#encodeURLString(String)}
 	 */
 	@Deprecated
-	public static String createURLString(String s)
+	public static String createURLString(final String s)
 	{
 		return NetUtils.encodeURLString(s);
 	}
-	
 	
 	/**
 	 * @deprecated use {@link NetUtils#getSessionID()}
@@ -1839,7 +1771,6 @@ public final class IOUtils
 		return NetUtils.getSessionID();
 	}
 	
-	
 	/**
 	 * @deprecated
 	 */
@@ -1849,63 +1780,68 @@ public final class IOUtils
 		NetUtils.renewSessionID();
 	}
 	
-	
 	/**
 	 * @deprecated use {@link NetUtils#setCookie(String, String)}
 	 */
 	@Deprecated
-	public static boolean setCookie(String name, String value) throws IOException
+	public static boolean setCookie(final String name, final String value) throws IOException
 	{
 		return false;
 	}
-	
 	
 	/**
 	 * @deprecated use {@link NetUtils#getCookie(String)}
 	 */
 	@Deprecated
-	public static String getCookie(String name) throws IOException
+	public static String getCookie(final String name) throws IOException
 	{
 		return null;
 	}
 	
+	/**
+	 * @deprecated use {@link NetUtils#sendMail(String, String, String, String)}
+	 */
+	@Deprecated
+	public static boolean mail(final String receiver, final String subject, final String message) throws IOException
+	{
+		return NetUtils.sendMail(receiver, subject, message);
+	}
 	
 	/**
 	 * @deprecated use {@link NetUtils#sendMail(String, String, String, String)}
 	 */
 	@Deprecated
-	public static boolean mail(String receiver, String subject, String message) throws IOException
+	public static boolean mail(
+		final String receiver,
+		final String subject,
+		final String message,
+		final String additionalHeaders) throws IOException
 	{
-		return NetUtils.sendMail(receiver,subject,message);
+		return NetUtils.sendMail(receiver, subject, message, additionalHeaders);
 	}
-	
-	
-	/**
-	 * @deprecated use {@link NetUtils#sendMail(String, String, String, String)}
-	 */
-	@Deprecated
-	public static boolean mail(String receiver, String subject, String message,
-			String additionalHeaders) throws IOException
-	{
-		return NetUtils.sendMail(receiver,subject,message,additionalHeaders);
-	}
-	
 	
 	/**
 	 * @deprecated use {@link NetUtils#uploadFile(String, String, long, String)}
 	 */
-	public static void uploadFile(String destFolder, String destFileName, long maxSize,
-			String dialogTitle) throws IOException
+	@Deprecated
+	public static void uploadFile(
+		final String destFolder,
+		final String destFileName,
+		final long maxSize,
+		final String dialogTitle) throws IOException
 	{
-		NetUtils.uploadFile(destFolder,destFileName,maxSize,dialogTitle);
+		NetUtils.uploadFile(destFolder, destFileName, maxSize, dialogTitle);
 	}
 	
 	/**
 	 * Lazy init of fileSystemView to prevent spawning an UI Thread prematurely
+	 * 
 	 * @return {@link FileSystemView}
 	 */
-	private static FileSystemView getFileSystemView() {
-		if (fileSystemView == null) {
+	private static FileSystemView getFileSystemView()
+	{
+		if(fileSystemView == null)
+		{
 			fileSystemView = FileSystemView.getFileSystemView();
 		}
 		
