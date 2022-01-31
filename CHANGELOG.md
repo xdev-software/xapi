@@ -1,3 +1,7 @@
+## 6.0.1
+* Don't start AWT Threads when not required #57
+
+
 ## 6.0.0
 * Ensured build compatibility with Java 8, 11 and 17
 * Minor code improvements, mostly for tests
