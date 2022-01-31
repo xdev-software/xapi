@@ -38,33 +38,30 @@ import org.junit.Test;
  * 
  * @author XDEV Software (CF)
  */
-public class IOUtils2Test
+public class IOUtilsNoAWTThreadsTest
 {
-	
 	@Test
 	public void noUIThread()
 	{
-		
-		
-		int awtThreadsBefore = runnigAWTThreads().size();
+		final int awtThreadsBefore = this.runnigAWTThreads().size();
 		
 		IOUtils.getOS();
 		
-		int awtThreadsAfter = runnigAWTThreads().size();
+		final int awtThreadsAfter = this.runnigAWTThreads().size();
 		
 		Assert.assertEquals(0, awtThreadsBefore);
 		Assert.assertEquals(0, awtThreadsAfter);
-		
-		
 	}
 	
-	private Set<Thread> runnigAWTThreads(){
-		Set<Thread> threadSet = new HashSet<>(Thread.getAllStackTraces().keySet());
-		return threadSet.stream().
-			filter(t -> t.getName().startsWith("AWT")).
-			collect(Collectors.toSet());
-		
-		
+	private Set<Thread> runnigAWTThreads()
+	{
+		// @formatter:off
+		return Thread.getAllStackTraces()
+			.keySet()
+			.stream()
+			.filter(t -> t.getName().startsWith("AWT"))
+			.collect(Collectors.toSet());
+		// @formatter:on
 	}
 	
 }
