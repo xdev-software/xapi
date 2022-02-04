@@ -31,5 +31,5 @@ package com.xdev.jadoth.collections;
  */
 public class ListView<E> //implements XGettingList<E>
 {
-// (01.10.2010)TODO ListView
+// Not implemented
 }

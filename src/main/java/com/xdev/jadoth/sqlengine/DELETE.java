@@ -135,7 +135,6 @@ public class DELETE extends TableQuery.Implementation implements ConditionalWrit
 	///////////////////////////////////////////////////////////////////////////
 	// SQL Syntax Methods //
 	///////////////////////
-	// (22.02.2010 TM)TODO: refactor to seperate FROM-Table and FROM-Clause.
 	/**
 	 * FROM.
 	 *

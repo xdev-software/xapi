@@ -101,13 +101,11 @@ public class CALL_ResultSet extends CALL<ResultSet> implements TableReadingQuery
 	
 	public Iterable<String> iterateColumnNames()
 	{
-		// (08.06.2010)TODO iterateColumnNames()
 		return null;
 	}
 	
 	public Iterable<SqlField> iterateSqlFields()
 	{
-		// (08.06.2010)TODO iterateSqlFields()
 		return null;
 	}
 	

@@ -57,10 +57,6 @@ public class TableRetrospection<A extends DbmsAdaptor<A>>
 	/** The file suffix. */
 	private String fileSuffix = "java";
 
-	/* (15.02.2010 TM)TODO: distinguish in generalIdentifierMappers start and end
-	 * (e.g.: after all transformations substitute java keywords)
-	 *
-	 */
 	/** The general identifier mappers. */
 	private List<RetrospectionIdentifierMapper> generalIdentifierMappers =
 		new ArrayList<RetrospectionIdentifierMapper>();
@@ -495,7 +491,6 @@ public class TableRetrospection<A extends DbmsAdaptor<A>>
 			//correct the column names
 			final Object[] columnArray = i.getColumnList().toArray();
 			for(int j = 0; j < columnArray.length; j++) {
-				// (11.02.2010 TM)NOTE: the objects must be Strings here! (column come from sql as Strings anyway)
 				columnArray[j] = applyIdentifierMappers(
 					columnArray[j].toString(), this.generalIdentifierMappers, this.columnIdentifierMappers
 				);

@@ -87,7 +87,6 @@ public abstract class SqlClause<E> extends QueryPart implements Iterable<E>
 	/** The key word seperator. */
 	protected String keyWordSeperator = SPACE;
 
-	// (19.05.2010 TM)TODO: maybe replace by pseudo-static getter
 	/** The indent first body element. */
 	protected boolean indentFirstBodyElement = false; //SET needs true because of new line after keyword
 
@@ -142,7 +141,6 @@ public abstract class SqlClause<E> extends QueryPart implements Iterable<E>
 	public List<E> getBody() {
 		return this.body;
 	}
-	// (23.08.2009)NOTE: Pseudo-static
 
 
 	/**

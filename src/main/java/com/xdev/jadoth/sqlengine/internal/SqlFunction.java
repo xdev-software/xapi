@@ -58,7 +58,6 @@ public abstract class SqlFunction extends SqlExpression
 	 * @param params the params
 	 */
 	public SqlFunction(final String functionName, final Object... params) {
-		// (12.11.2009 TM)TODO: pseudo-static keyword getter instead
 		super(functionName);
 		this.parameters = SQL.util.parseExpressionArray(params);
 	}

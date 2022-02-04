@@ -115,7 +115,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
-				<version>3.0.0-M1</version>
+				<version>3.0.0-M2</version>
 			</plugin>
 
 			<plugin>
@@ -127,7 +127,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.2.0</version>
+				<version>3.2.2</version>
 			</plugin>
 
 			<plugin>
@@ -139,7 +139,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>3.9.1</version>
+				<version>3.10.0</version>
 			</plugin>
 
 			<plugin>
@@ -178,7 +178,7 @@
 
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>3.9.0</version>
 				<configuration>
 					<compilerId>eclipse</compilerId>
 					<source>${javaVersion}</source>
@@ -279,7 +279,7 @@
 				<dependency>
 					<groupId>com.xdev-software</groupId>
 					<artifactId>xapi-fx</artifactId>
-					<version>1.0.0-java8-SNAPSHOT</version>
+					<version>6.0.1-java8</version>
 				</dependency>
 			</dependencies>
 

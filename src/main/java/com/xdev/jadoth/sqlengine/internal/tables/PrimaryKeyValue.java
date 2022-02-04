@@ -29,7 +29,6 @@ import com.xdev.jadoth.sqlengine.internal.SqlField;
 import com.xdev.jadoth.sqlengine.internal.WHERE;
 
 
-// (14.05.2010 TM)TODO: Overhaul with Identity<I> and KeyValue<K,V>
 /**
  * The Class PrimaryKeyValue.
  * 

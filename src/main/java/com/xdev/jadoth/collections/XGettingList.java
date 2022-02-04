@@ -276,17 +276,4 @@ public interface XGettingList<E> extends RandomAccess, XGettingCollection<E>, Li
 		int startIndex, int endIndex, XGettingCollection<E> c, Equalator<E> comparatorr, C targetCollection
 	);
 
-
-
-	// (12.09.2010)TODO subscript()
-//	public _intList    subscript(Predicate<E> predicate);
-//	public _intList    subscript(TPredicate<E> predicate);
-//	public _intList    subscript(Predicate<E> predicate, Integer limit);
-//	public _intList    subscript(TPredicate<E> predicate, Integer limit);
-
-//	public _intList rngSubscript(int startIndex, int endIndex, Predicate<E> predicate);
-//	public _intList rngSubscript(int startIndex, int endIndex, TPredicate<E> predicate);
-//	public _intList rngSubscript(int startIndex, int endIndex, Predicate<E> predicate, Integer limit);
-//	public _intList rngSubscript(int startIndex, int endIndex, TPredicate<E> predicate, Integer limit);
-
 }

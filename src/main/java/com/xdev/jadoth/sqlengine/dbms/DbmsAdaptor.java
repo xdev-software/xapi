@@ -70,7 +70,6 @@ public interface DbmsAdaptor<A extends DbmsAdaptor<A>>
 		String host, int port, String user,	String password, String catalog, String properties
 	);
 
-	// (20.02.2010)TODO move to ConnectionInformation (?)
 	/**
 	 * Gets the jdbc connection.
 	 * 

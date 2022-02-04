@@ -141,7 +141,6 @@ public interface Query extends ToString, Copyable, Cloneable, AssembableParamter
 		//Logging, disabled by default
 		/** The log. */
 		private LoggingAspect log = null;
-		// (02.07.2010 TM)FIXME: Logger Setter. Standard jul Logger in setter!
 
 		/** The level compose. */
 //		private Level levelAssemble = null;

@@ -37,5 +37,5 @@ package com.xdev.jadoth.collections;
  */
 public class ArrayView<E> //implements XGettingList<E>
 {
-	// (01.10.2010)TODO ArrayView
+	// Not implemented
 }

@@ -343,11 +343,7 @@ public final class AssignmentList implements List<ColumnValueAssignment>, Copyab
 			final DbmsDMLAssembler<?> dmlAssembler, final StringBuilder sb, final int indentLevel, final int flags
 		)
 		{
-			// (13.10.2010 TM)NOTE: disabled to implicetely use java null as SQL null
-//			if(this.value == null) return sb;
-
 			dmlAssembler.assembleExpression(this.column, sb, indentLevel, flags);
-			// (21.04.2010 TM)TODO: Maybe move [column]+" = "+[value] to DbmsDMLAssembler.assembleAssignment(column, value)
 			sb.append(" = ");
 			assembleObject(this.value, dmlAssembler, sb, indentLevel, flags);
 			return sb;

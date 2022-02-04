@@ -68,7 +68,6 @@ public class AssignmentValuesClause extends ListClauseEnclosed<Object>
 	protected AssignmentValuesClause(final AssignmentValuesClause copySource)
 	{
 		super(copySource);
-		// (19.05.2010 TM)FIXME: Iterable can't be cloned or copy-constructed. Replace!
 		this.values = copySource.values;
 	}
 

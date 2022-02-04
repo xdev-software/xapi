@@ -81,8 +81,6 @@ public interface DbmsRetrospectionAccessor<A extends DbmsAdaptor<A>> extends Dbm
 	
 	/** The Constant Column_CHARACTER_MAXIMUM_LENGTH. */
 	public static final String Column_CHARACTER_MAXIMUM_LENGTH = "CHARACTER_MAXIMUM_LENGTH";
-//	public static final String Column_IS_UNIQUE = "IS_UNIQUE";
-	// (10.02.2010 TM)NOTE: removed UNIQUE recognition. Use direct index definition only instead.
 
 
 
@@ -636,25 +634,20 @@ public List<RetrospectionIdentifierMapper> getGeneralIdentifierMappers();
 			final int colIndexNullable = rt.getColumnIndex(Column_IS_NULLABLE);
 			final int colIndexDefault = rt.getColumnIndex(Column_COLUMN_DEFAULT);
 			final int colIndexMaxLen = rt.getColumnIndex(Column_CHARACTER_MAXIMUM_LENGTH);
-//			final int colIndexUnique = rt.getColumnIndex(Column_IS_UNIQUE);
 
 			String name = null;
 			DATATYPE type = null;
 			boolean nullable = true;
-//			boolean unique = false;
 			Object defaultValue = null;
 			Integer length = 0;
 			for (int i = 0; i < rowCount; i++) {
 				name = rt.getValue(i, colIndexName).toString();
 				type = this.getDbmsAdaptor().getDdlMapper().mapDataType(rt.getValue(i, colIndexType).toString());
 				nullable = SQL.util.recognizeBooleanPrimitive(rt.getValue(i, colIndexNullable));
-//				unique = SQL.util.recognizeBooleanPrimitive(rt.getValue(i, colIndexUnique));
 				defaultValue = this.parseColumnDefaultValue(rt.getValue(i, colIndexDefault));
 				length = (Integer)rt.getValue(i, colIndexMaxLen);
 				try {
-					// (09.11.2009 TM)TODO: retrospection loadColumns(): precision and scale
 					columns[i] = new SqlField(name, type, length==null?0:length, null, null, !nullable, false, defaultValue);
-					// (10.02.2010 TM)NOTE: removed UNIQUE recognition. Use direct index definition only instead.
 				}
 				catch(final Exception e) {
 					e.printStackTrace();

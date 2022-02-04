@@ -764,7 +764,6 @@ public abstract class JaReflect
 		}
 		final List<Method> allMethods = listAllMethods(c, 0);
 		for (final Method f : allMethods) {
-			// (11.09.2009 TM)TODO: Testen
 			if(f.getName().equals(name) && f.getParameterTypes().equals(parameterTypes)) {
 				return f;
 			}
@@ -1123,7 +1122,6 @@ public abstract class JaReflect
 	 */
 	public static final <O> O callDefaultConstructor(final Class<O> c, final Object enclosingInstance)
 	{
-		// (17.01.2010)FIXME: Check AnonymousClass handling. Static reference, etc.
 		if(isInnerNestedClass(c) || c.isAnonymousClass()) {
 			final Class<?> enclosingClass = c.getEnclosingClass();
 			if(enclosingInstance != null && enclosingInstance.getClass() != enclosingClass) {

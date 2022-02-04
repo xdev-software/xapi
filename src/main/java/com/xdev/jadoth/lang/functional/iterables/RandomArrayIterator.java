@@ -41,8 +41,5 @@ public class RandomArrayIterator<E> //implements Iterator<E>
 		this.array = array;
 		this.count = count;
 	}
-	
-	// (28.08.2010)TODO RandomArrayIterator
-	
-	
+
 }

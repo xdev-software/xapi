@@ -61,11 +61,6 @@ public interface DbmsDMLAssembler<A extends DbmsAdaptor<A>>
 		SqlClause<?> sqlClause, StringBuilder sb, int indentLevel, int flags
 	);
 	
-	// (10.02.2010)TODO MERGE (and maybe "simpleMERGE" like in H2)
-
-	/* (16.02.2010 TM)TODO: Refactor to use for every expression, not only for selectItem
-	 * urgent, because "AliasedExpression" wraps a SelectItems to a SqlExpression and bypassing this method.
-	 */
 	/**
 	 * Assemble select item.
 	 * 

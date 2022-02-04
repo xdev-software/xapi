@@ -37,7 +37,6 @@ package com.xdev.jadoth.collections;
  */
 public class ArrayAccessor<E> //implements XGetSetList<E>, List<E>
 {
-	// (13.09.2010 TM)FIXME: copy from GrowList when complete and replace length modifying code with throw ~Exception
 
 	///////////////////////////////////////////////////////////////////////////
 	// instance fields //

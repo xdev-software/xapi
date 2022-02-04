@@ -137,7 +137,6 @@ public abstract class SqlTable extends SqlTableIdentity
 		}
 		catch(final SQLEngineInvalidIdentifier e) {
 			//can never happen because valid java identifiers are always valid SQL identifiers
-			// (27.05.2009)TODO Sonderzeichen?
 			return null;
 		}
 	}
@@ -505,7 +504,6 @@ public abstract class SqlTable extends SqlTableIdentity
 	 */
 	@Label(LABEL_METHOD_ForeignKey)
 	protected static final SqlIndex ForeignKey(final Object... columnList) {
-		// (10.11.2009 TM)TODO: ForeignKey
 		return null;
 	}
 
@@ -690,10 +688,6 @@ public abstract class SqlTable extends SqlTableIdentity
 	 */
 	protected void initializeColumns(/*final boolean forceInitialize*/) 
 	{
-		// (18.08.2010 TM)NOTE: forceInitialize removed due to problems with inheritance
-//		if(this.initializedClass == this.getClass() && !forceInitialize) {
-//			return;
-//		}
 		final ArrayList<String> columnNames = new ArrayList<String>(30);
 		final ArrayList<SqlField> fields = new ArrayList<SqlField>(30);
 		
@@ -709,7 +703,6 @@ public abstract class SqlTable extends SqlTableIdentity
 		}
 		this.columnNames = columnNames.toArray(new String[columnNames.size()]);
 		this.cachedFields = fields.toArray(new SqlField[fields.size()]);
-//		this.initializedClass = this.getClass();
 	}
 
 	/**
@@ -719,10 +712,6 @@ public abstract class SqlTable extends SqlTableIdentity
 	 */
 	protected void initializeIndices(/*final boolean forceInitialize*/) 
 	{
-//		if(this.initializedIndices && !forceInitialize) {
-//			return;
-//		}
-		// (05.06.2009)TODO index Arrays verarbeiten (siehe ArrayTable Mappingklasse)
 		final SqlDdlTable.Indices indices = this.util.getIndices();
 		if(indices != null) {
 			for (final Field f : JaReflect.getAllFields(indices.getClass())) {
@@ -737,7 +726,6 @@ public abstract class SqlTable extends SqlTableIdentity
 				}
 			}
 		}
-//		this.initializedIndices = true;
 	}
 
 
@@ -791,7 +779,6 @@ public abstract class SqlTable extends SqlTableIdentity
 		 */
 		public boolean existsInDB() 
 		{
-			// (11.11.2009 TM)FIXME: Oracle FETCH_FIRST
 			final SELECT y = new SELECT().FETCH_FIRST(0).FROM(SqlTable.this.getTopLevelInstance());			
 			try {
 				y.execute();

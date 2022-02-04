@@ -78,7 +78,6 @@ public class JavaSourceCode extends AbstractSourceCode<JavaSourceCode>
 			|| c == Float.class
 			|| c == Double.class
 			|| c == Character.class;
-		// (13.08.2009)TODO simply check package name for "java.lang" ?
 	}
 
 	/**

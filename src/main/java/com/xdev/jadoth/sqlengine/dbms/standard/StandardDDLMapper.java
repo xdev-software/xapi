@@ -118,7 +118,6 @@ implements DbmsDDLMapper<A>
 		c.put(SQL.LANG.INDEX, INDEXTYPE.NORMAL);
 		c.put(SQL.LANG.BITMAP, INDEXTYPE.BITMAP);
 		c.put(SQL.LANG.UNIQUE, INDEXTYPE.UNIQUE);
-		// (10.11.2009 TM)NOTE: Maybe add Primary and Foreign here too even though they don't appear in the Dict.SELECT
 		return c;
 	}
 
@@ -208,7 +207,6 @@ implements DbmsDDLMapper<A>
 	 * @return
 	 * @see com.xdev.jadoth.sqlengine.dbms.DbmsDDLMapper#mapIndexType(java.lang.String)
 	 */
-	// (20.02.2010)TODO check if returning NORMAL as default is really a good idea
 	@Override
 	public INDEXTYPE mapIndexType(final String indexTypeString){
 		final INDEXTYPE mappedType = indexTypeStringMapping.get(indexTypeString.toUpperCase());
@@ -254,7 +252,6 @@ implements DbmsDDLMapper<A>
 	@Override
 	public void createIndex(final SqlIndex index, final boolean tableCreation) throws SQLEngineException
 	{
-		// (09.11.2009 TM)NOTE: PKEY is created by CREATE_TABLE().
 		if(tableCreation && index instanceof SqlPrimaryKey) return;
 		
 		this.getDbmsAdaptor().getDatabaseGateway().execute(SqlExecutor.update, index.CREATE_INDEX());	
@@ -275,7 +272,6 @@ implements DbmsDDLMapper<A>
 	/* (09.11.2009 TM)NOTE:
 	 * Should be extended by some "boolean batchMode" and "boolean tableCreation" parameters.
 	 */
-	// (20.02.2010)TODO maybe return how many indices have been created
 	/**
 	 * @param table
 	 * @throws SQLEngineException

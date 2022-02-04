@@ -342,7 +342,6 @@ public abstract class SqlDdlTable extends SqlTable
 			sb.append(_);
 			sb.append(DEFAULT);
 			sb.append(_);
-			// (12.09.2009)FIXME: SQL.escape()... but for that remove enclosing ''!
 			sb.append(defaultValue.toString());
 		}
 		return sb.toString();

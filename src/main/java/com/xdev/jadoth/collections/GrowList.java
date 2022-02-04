@@ -286,10 +286,6 @@ public final class GrowList<E> implements XList<E>
 		data[j] = t;
 	}
 
-	/* (06.10.2010)NOTE:
-	 * all uses of this method could be optimized by local iterative "free = data.length - size"
-	 * plus "if(free == 0){enlarge}" lookaheads
-	 */
 	private void internalAdd(final Object e)
 	{
 		if(this.size == this.data.length){
@@ -497,7 +493,6 @@ public final class GrowList<E> implements XList<E>
 	@SuppressWarnings("unchecked")
 	public VarList<E> toVarList()
 	{
-		// (14.09.2010 TM)XXX: overhaul to use a more efficient method when available
 		final VarList<E> vl = new VarList<E>(this.size);
 		final Object[] data = this.data;
 		for(int i = 0, size = this.size; i < size; i++){

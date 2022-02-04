@@ -164,8 +164,7 @@ public class ColumnDefinition extends AbstractTableElementDefinition<ColumnDefin
 		boolean needsComma = false;
 		sb.append(this.type);
 		sb.append(par);
-//		if(type.equals(SQL.TYPE.VARCHAR) || type.equals(SQL.TYPE.CHAR)){
-		// (10.02.2010 TM)NOTE: modified to handle LONGVARCHAR and LONGVARBINARY as well
+		
 		if(this.type != null && this.type.isLengthed()){
 			sb.append(this.typeLength);
 			needsComma = true;
@@ -196,7 +195,6 @@ public class ColumnDefinition extends AbstractTableElementDefinition<ColumnDefin
 			String defaultString = this.defaultValue.toString();
 
 			if(this.type != null && this.type.isLiteral()){
-				// (11.11.2009 TM)TODO: remove escaping, refactor accordingly
 				SQL.util.assembleEscape(sb, defaultString.replaceAll("\n", "\\\\n"));
 			}
 			else {
@@ -210,7 +208,6 @@ public class ColumnDefinition extends AbstractTableElementDefinition<ColumnDefin
 					}
 				}
 				else {
-					// (11.11.2009 TM)TODO: remove escaping, refactor accordingly
 					sb.append(SQL.util.escapeIfNecessary(defaultString));
 				}
 			}

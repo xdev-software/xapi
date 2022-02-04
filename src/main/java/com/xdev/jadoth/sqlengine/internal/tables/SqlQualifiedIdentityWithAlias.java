@@ -89,20 +89,9 @@ public class SqlQualifiedIdentityWithAlias extends SqlQualifiedIdentity
 		protected Sql(final String sqlSchema, final String sqlName, final String sqlAlias)
 		{
 			super(sqlSchema,sqlName);
-			// (12.08.2009)FIXME: check strings for SQL keywords (i.e. Alias
-			// "OR" etc)
 			this.alias = sqlAlias;
 		}
 		
-		// /**
-		// * @return
-		// * @see java.lang.Object#toString()
-		// */
-		// @Override
-		// public String toString() {
-		// return this.getClass()
-		// +": "+this.schema+", "+this.name+", "+this.alias;
-		// }
 	}
 	
 }

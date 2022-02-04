@@ -59,7 +59,6 @@ public class DbmsConfiguration<A extends DbmsAdaptor<A>>
 	private boolean delimitTableIdentifiers = false;
 	private boolean delimitColumnIdentifiers = false;
 	private boolean delimitAliases = false;
-	// (12.07.2010 TM)FIXME: buggy when used on actual "IN" keyword etc.
 	private boolean autoEscapeReservedWords = false;
 
 	

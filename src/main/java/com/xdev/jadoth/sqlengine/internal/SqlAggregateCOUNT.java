@@ -43,7 +43,6 @@ public class SqlAggregateCOUNT extends SqlFunction {
 	 * Instantiates a new sql aggregate count.
 	 */
 	public SqlAggregateCOUNT() {
-		// (14.02.2010)FIXME: SqlStar instance global singleton immutable
 		super(null, new SqlStar());
 	}
 

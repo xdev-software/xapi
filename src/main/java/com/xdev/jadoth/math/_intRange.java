@@ -556,7 +556,6 @@ public class _intRange implements Set<Integer>
 		
 		int loopValue = this.from;		
 		
-		// (25.08.2010 TM)NOTE: may be faster than catching all three cases in every iteration. But not sure.
 		try {
 			while(true){
 				try {

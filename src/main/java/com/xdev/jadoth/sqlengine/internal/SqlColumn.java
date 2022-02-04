@@ -83,7 +83,6 @@ public class SqlColumn extends SqlIdentifier
 	 */
 	public static boolean needsDelimiting(final String columnName)
 	{
-		// (28.05.2010)FIXME: complete columnName delimiting determination
 		return columnName == null ?false :columnName.indexOf(' ') != -1;
 	}
 	

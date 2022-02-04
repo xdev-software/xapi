@@ -104,7 +104,6 @@ implements TableClause, Joining<JoinClause>
 		this.joinCondition = SQL.util.parseCondition(joinCondition);
 		this.parentFromClause = parentFromClause;
 
-		// (27.08.2009 TM)FIXME: DEBUG!
 		this.bodyElementSeperator = "\n";
 	}
 

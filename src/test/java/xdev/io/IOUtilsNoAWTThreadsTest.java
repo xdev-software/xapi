@@ -1,11 +1,11 @@
 
-package com.xdev.jadoth.sqlengine.internal;
+package xdev.io;
 
 /*-
  * #%L
  * XDEV Application Framework
  * %%
- * Copyright (C) 2003 - 2020 XDEV Software
+ * Copyright (C) 2003 - 2022 XDEV Software
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -23,39 +23,42 @@ package com.xdev.jadoth.sqlengine.internal;
  * #L%
  */
 
-import java.text.DateFormat;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-import com.xdev.jadoth.sqlengine.dbms.DbmsDMLAssembler;
-
-
+import org.junit.Assert;
+import org.junit.Test;
 
 
 /**
- * The Class SqlDate.
+ * Tests for the Class {@link IOUtils}.
  * 
- * @author Thomas Muenz
+ * @author XDEV Software (CF)
  */
-public class SqlDate extends SqlTimestamp {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2752483563586734195L;
-
-	/**
-	 * Instantiates a new sql date.
-	 * 
-	 * @param o the o
-	 */
-	public SqlDate(final Object o) {
-		super(o);
-	}
-	
-	
-	@Override
-	public DateFormat getDateFormat(final DbmsDMLAssembler<?> dbmsAdaptor)
+public class IOUtilsNoAWTThreadsTest
+{
+	@Test
+	public void noUIThread()
 	{
-		return dbmsAdaptor.getDateFormatDATE();
+		final int awtThreadsBefore = this.runnigAWTThreads().size();
+		
+		IOUtils.getOS();
+		
+		final int awtThreadsAfter = this.runnigAWTThreads().size();
+		
+		Assert.assertEquals(0, awtThreadsBefore);
+		Assert.assertEquals(0, awtThreadsAfter);
 	}
-
+	
+	private Set<Thread> runnigAWTThreads()
+	{
+		// @formatter:off
+		return Thread.getAllStackTraces()
+			.keySet()
+			.stream()
+			.filter(t -> t.getName().startsWith("AWT"))
+			.collect(Collectors.toSet());
+		// @formatter:on
+	}
+	
 }

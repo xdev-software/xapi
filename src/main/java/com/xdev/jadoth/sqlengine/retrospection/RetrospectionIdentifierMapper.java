@@ -33,7 +33,6 @@ import java.util.List;
  */
 public interface RetrospectionIdentifierMapper
 {
-	// (15.02.2010 TM)TODO: add parameter String[] allContextIdentifiers
 	/**
 	 * Map identifier.
 	 * 

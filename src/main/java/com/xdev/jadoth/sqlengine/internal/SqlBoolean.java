@@ -43,7 +43,6 @@ public class SqlBoolean extends SqlExpression
 	private static final long serialVersionUID = -174548008136517689L;
 
 	//see 4.5.1 Introduction to Boolean types
-	// (21.02.2010)TODO should be "True" and "False" actually
 	/** The Constant True. */
 	public static final Character TRUE = '1';
 	
@@ -64,8 +63,6 @@ public class SqlBoolean extends SqlExpression
 	public SqlBoolean(final Boolean expression) {
 		super(expression);
 	}
-
-	// (21.02.2010)XXX: Assemble SqlBoolean by DbmsAdaptor
 
 	/**
 	 * @param dmlAssembler

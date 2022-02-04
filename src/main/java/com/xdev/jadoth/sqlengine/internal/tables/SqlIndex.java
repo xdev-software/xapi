@@ -124,7 +124,6 @@ public class SqlIndex implements Iterable<Object>
 		this.columnList.add(column);
 	}
 
-	// (20.02.2010)TODO handle by DbmsDDLMapper...
 	/**
 	 * CREAT e_ index.
 	 *

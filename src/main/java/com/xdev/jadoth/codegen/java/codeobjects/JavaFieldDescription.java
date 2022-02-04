@@ -173,7 +173,6 @@ public interface JavaFieldDescription extends JavaAccessibleObjectDescription, J
 		@Override
 		public Class<?> getDeclaringClass()
 		{
-			// (17.06.2010)XXX maybe JavaFieldDescription.getDeclaringClass() makes sense?
 			return null;
 		}
 
