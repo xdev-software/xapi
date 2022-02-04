@@ -24,7 +24,7 @@ XDEV(-IDE) is a visual Java development environment for fast and easy applicatio
 
 The XDEV-IDE was license-free up to version 4 inclusive and is available for Windows, Linux and macOS. From version 5, the previously proprietary licensed additional modules are included in the IDE and the license of the entire product has been converted to a paid subscription model. The XDEV Application Framework, which represents the core of the RAD concept of XDEV and is part of every XDEV application, was released as open-source in 2008.
 
-## Migration Guide to version 6.0.0
+## [Migration Guide to version 6+](https://github.com/xdev-software/xapi/blob/develop/CHANGELOG.md#600)
 *This guide only applies if you use XAPI outside of the XDEV IDE.*
 
 [The guide](https://github.com/xdev-software/xapi/blob/develop/CHANGELOG.md#detached-javafx---migration-guide) is available in the [changelog](https://github.com/xdev-software/xapi/blob/develop/CHANGELOG.md#600).
@@ -50,10 +50,13 @@ The XDEV Application Framework is released under [GNU Lesser General Public Lice
 View the [summary of all dependencies online](https://xdev-software.github.io/xapi/dependencies/)
 
 ## Releasing [![Build](https://img.shields.io/github/workflow/status/xdev-software/xapi/Release?label=Release)](https://github.com/xdev-software/xapi/actions/workflows/release.yml)
-Consider doing a [test-deployment](https://github.com/xdev-software/xapi/actions/workflows/test-deploy.yml?query=branch%3Adevelop) before actually releasing.
+
+Before releasing:
+* Consider doing a [test-deployment](https://github.com/xdev-software/xapi/actions/workflows/test-deploy.yml?query=branch%3Adevelop) before actually releasing.
+* Check the [changelog](CHANGELOG.md)
 
 If the ``develop`` is ready for release, create a pull request to the ``master``-Branch and merge the changes.
 
 When the release is finished do the following:
 * Merge the auto-generated PR (with the incremented version number) back into the ``develop``
-* Add the release notes to the [GitHub release](https://github.com/xdev-software/xapi/releases/latest)
+* Link the corresponding version from the [changelog](CHANGELOG.md) to the [GitHub release](https://github.com/xdev-software/xapi/releases/latest)
