@@ -279,7 +279,7 @@
 				<dependency>
 					<groupId>com.xdev-software</groupId>
 					<artifactId>xapi-fx</artifactId>
-					<version>6.0.1-java8</version>
+					<version>6.0.2-java8</version>
 				</dependency>
 			</dependencies>
 
