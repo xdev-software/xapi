@@ -253,7 +253,7 @@
 				<artifactId>maven-dependency-plugin</artifactId>
 				<!-- version is intentional not up-to-date. There is a bug in 3.2.0 see 
 					https://issues.apache.org/jira/browse/MDEP-757 -->
-				<version>3.1.2</version>
+				<version>3.3.0</version>
 				<executions>
 					<execution>
 						<id>analyze</id>
