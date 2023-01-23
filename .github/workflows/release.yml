@@ -81,7 +81,7 @@ jobs:
           Add the following lines to your pom:
           ```XML
           <dependency>
-             <groupId>com.xdev-software</groupId>
+             <groupId>software.xdev</groupId>
              <artifactId>xapi-db-postgresql</artifactId>
              <version>${{ steps.version.outputs.release }}</version>
           </dependency>
