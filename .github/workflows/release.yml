@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       
-    - name: Set up JDK 8
+    - name: Set up JDK
       uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
@@ -105,7 +105,7 @@ jobs:
         git config --global user.name "GitHub Actions"
         git pull
     
-    - name: Set up JDK 8 OSSRH
+    - name: Set up JDK OSSRH
       uses: actions/setup-java@v3
       with: # running setup-java again overwrites the settings.xml
         distribution: 'temurin'
@@ -136,7 +136,7 @@ jobs:
         git config --global user.name "GitHub Actions"
         git pull
 
-    - name: Set up JDK 8
+    - name: Set up JDK
       uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
