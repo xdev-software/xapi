@@ -4,8 +4,12 @@ on:
   push:
     branches: [ master ]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
-  check_code: # Validates the code (see develop.yml)
+  check_code: # Validates the code (see checkBuild.yml)
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -57,7 +61,9 @@ jobs:
     - name: Get version
       id: version
       run: |
-       echo "::set-output name=release::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
+        version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        echo "release=$version" >> $GITHUB_OUTPUT
+        echo "releasenumber=${version//[!0-9]/}" >> $GITHUB_OUTPUT
   
     - name: Commit and Push
       run: |
@@ -69,25 +75,23 @@ jobs:
     
     - name: Create Release
       id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: shogo82148/actions-create-release@v1
       with:
         tag_name: v${{ steps.version.outputs.release }}
         release_name: v${{ steps.version.outputs.release }}
         commitish: master
         body: |
-          ## Installation [![Maven Central](https://img.shields.io/maven-central/v/com.xdev-software/xapi-db-postgresql?versionPrefix=${{ steps.version.outputs.release }})](https://mvnrepository.com/artifact/com.xdev-software/xapi-db-postgresql)
+          ## [Changelog](https://github.com/xdev-software/${{ github.event.repository.name }}/blob/develop/CHANGELOG.md#${{ steps.version.outputs.releasenumber }})
+          See [Changelog#v${{ steps.version.outputs.release }}](https://github.com/xdev-software/${{ github.event.repository.name }}/blob/develop/CHANGELOG.md#${{ steps.version.outputs.releasenumber }}) for more information.
+          ## Installation
           Add the following lines to your pom:
           ```XML
           <dependency>
-             <groupId>software.xdev</groupId>
-             <artifactId>xapi-db-postgresql</artifactId>
+             <groupId>com.xdev-software</groupId>
+             <artifactId>${{ github.event.repository.name }}</artifactId>
              <version>${{ steps.version.outputs.release }}</version>
           </dependency>
           ```
-        draft: false
-        prerelease: false
 
   publish_central: # Publish the code to central
     runs-on: ubuntu-latest
@@ -196,7 +200,6 @@ jobs:
     - name: pull-request
       uses: repo-sync/pull-request@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
         destination_branch: "develop"
         pr_title: "Sync back"
         pr_body: "An automated PR to sync changes back"
