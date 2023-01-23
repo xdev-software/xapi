@@ -52,8 +52,8 @@
     </properties>
 
     <repositories>
-        <!-- The order of definitions matters. Explicitly defining central here 
-			to make sure it has the highest priority. -->
+        <!-- The order of definitions matters. Explicitly defining central here
+            to make sure it has the highest priority. -->
         <repository>
             <id>central</id>
             <url>https://repo.maven.apache.org/maven2</url>
@@ -103,7 +103,7 @@
                     </properties>
                     <licenseSets>
                         <licenseSet>
-                            <header>com/mycila/maven/plugin/license/templates/APACHE-2.txt</header>
+                            <header>com/mycila/maven/plugin/license/templates/LGPL-3.txt</header>
                             <includes>
                                 <include>src/main/java/**</include>
                                 <include>src/test/java/**</include>
