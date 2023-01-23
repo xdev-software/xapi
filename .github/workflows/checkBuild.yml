@@ -1,0 +1,59 @@
+name: Check Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ develop ]
+    paths-ignore: 
+      - '**.md'
+  pull_request:
+    branches: [ develop ]
+    paths-ignore: 
+      - '**.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java: [8, 11, 17]
+        java-package: [jdk]
+        distribution: [temurin]
+
+    steps:
+    - uses: actions/checkout@v3
+      
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: ${{ matrix.distribution }}
+        java-version: ${{ matrix.java }}
+        java-package: ${{ matrix.java-package }}
+        cache: 'maven'
+      
+    - name: Build with Maven
+      run: mvn -B clean verify
+      
+    - name: Check for uncommited changes
+      run: |
+        if [[ "$(git status --porcelain)" != "" ]]; then
+          echo ----------------------------------------
+          echo git status
+          echo ----------------------------------------
+          git status
+          echo ----------------------------------------
+          echo git diff
+          echo ----------------------------------------
+          git diff
+          echo ----------------------------------------
+          echo Troubleshooting
+          echo ----------------------------------------
+          echo "::error::Unstaged changes detected. Locally try running: git clean -ffdx && mvn -B clean verify"
+          exit 1
+        fi
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: jars-java-${{ matrix.java }}
+        path: target/*.jar
