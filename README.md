@@ -1,7 +1,6 @@
 [![Latest version](https://img.shields.io/maven-central/v/com.xdev-software/xdev-swing-framework-template)](https://mvnrepository.com/artifact/com.xdev-software/xdev-swing-framework-template)
 [![Build](https://img.shields.io/github/actions/workflow/status/xdev-software/xdev-swing-framework-template/checkBuild.yml?branch=develop)](https://github.com/xdev-software/xdev-swing-framework-template/actions/workflows/checkBuild.yml?query=branch%3Adevelop)
 [![javadoc](https://javadoc.io/badge2/com.xdev-software/xdev-swing-framework-template/javadoc.svg)](https://javadoc.io/doc/com.xdev-software/xdev-swing-framework-template) 
-
 # xdev-swing-framework-template
 
 A XDEV Swing Framework Template
