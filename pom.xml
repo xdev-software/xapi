@@ -9,7 +9,6 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-
     <name>xdev-swing-framework-template</name>
     <description>xdev-swing-framework-template</description>
     <url>https://github.com/xdev-software/xdev-swing-framework-template</url>
