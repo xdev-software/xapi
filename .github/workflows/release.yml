@@ -198,7 +198,7 @@ jobs:
         git push origin
     
     - name: pull-request
-      uses: repo-sync/pull-request@v3
+      uses: repo-sync/pull-request@v2
       with:
         destination_branch: "develop"
         pr_title: "Sync back"
