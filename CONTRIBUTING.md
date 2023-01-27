@@ -33,10 +33,10 @@ You should have the following things installed:
   * Ensure that everything is encoded in ``UTF-8``
   * Ensure that the JDK/Java-Version is correct
 
-## Releasing [![Build](https://img.shields.io/github/actions/workflow/status/xdev-software/xdev-swing-framework-template/release.yml?branch=master)](https://github.com/xdev-software/xdev-swing-framework-template/actions/workflows/release.yml)
+## Releasing [![Build](https://img.shields.io/github/actions/workflow/status/xdev-software/xapi/release.yml?branch=master)](https://github.com/xdev-software/xapi/actions/workflows/release.yml)
 
 Before releasing:
-* Consider doing a [test-deployment](https://github.com/xdev-software/xdev-swing-framework-template/actions/workflows/test-deploy.yml?query=branch%3Adevelop) before actually releasing.
+* Consider doing a [test-deployment](https://github.com/xdev-software/xapi/actions/workflows/test-deploy.yml?query=branch%3Adevelop) before actually releasing.
 * Check the [changelog](CHANGELOG.md)
 
 If the ``develop`` is ready for release, create a pull request to the ``master``-Branch and merge the changes.
