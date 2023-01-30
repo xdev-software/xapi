@@ -575,7 +575,7 @@ public abstract class SqlDdlTable extends SqlTable
 		 * @param <A> the generic type
 		 * @param dbms the dbms
 		 */
-		protected <A extends DbmsAdaptor<A>> void defineTriggers(final A dbms) {
+		protected void defineTriggers(final DbmsAdaptor<?> dbms) {
 			//nothing in basic implementation, override only if needed
 		}
 
