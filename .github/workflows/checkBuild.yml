@@ -57,3 +57,4 @@ jobs:
       with:
         name: jars-java-${{ matrix.java }}
         path: target/*.jar
+        if-no-files-found: error

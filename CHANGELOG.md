@@ -1,3 +1,14 @@
+## 6.0.2
+* The code can now be compiled with [``javac``](https://en.wikipedia.org/wiki/Javac)
+  * ``SqlDdlTable.Triggers#defineTriggers`` was changed from
+    ```java
+    protected <A extends DbmsAdaptor<A>> void defineTriggers(final A dbms)
+    ```
+    to
+    ```java
+    protected void defineTriggers(final DbmsAdaptor<?> dbms)
+    ```
+
 ## 6.0.1
 * Don't start AWT Threads when not required #57
 
