@@ -87,23 +87,23 @@
     </distributionManagement>
 
     <dependencies>
-		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>javax.annotation-api</artifactId>
-			<version>1.3.2</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.10.19</version>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -150,12 +150,12 @@
                     </compilerArgs>
                 </configuration>
                 <dependencies>
-					<dependency>
-						<groupId>org.codehaus.plexus</groupId>
-						<artifactId>plexus-compiler-eclipse</artifactId>
-						<version>2.8.8</version>
-					</dependency>
-				</dependencies>
+                    <dependency>
+                        <groupId>org.codehaus.plexus</groupId>
+                        <artifactId>plexus-compiler-eclipse</artifactId>
+                        <version>2.8.8</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -190,101 +190,101 @@
                 </executions>
             </plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<!-- version is intentional not up-to-date. There is a bug in 3.2.0 see 
-					https://issues.apache.org/jira/browse/MDEP-757 -->
-				<version>3.3.0</version>
-				<executions>
-					<execution>
-						<id>analyze</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>analyze-only</goal>
-						</goals>
-						<configuration>
-							<failOnWarning>true</failOnWarning>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <!-- version is intentional not up-to-date. There is a bug in 3.2.0 see 
+                    https://issues.apache.org/jira/browse/MDEP-757 -->
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>analyze</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>analyze-only</goal>
+                        </goals>
+                        <configuration>
+                            <failOnWarning>true</failOnWarning>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             
             <plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M7</version>
-				<configuration>
-					<excludedGroups>
-						xdev.test.UITest
-					</excludedGroups>
-				</configuration>
-			</plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M7</version>
+                <configuration>
+                    <excludedGroups>
+                        xdev.test.UITest
+                    </excludedGroups>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <profiles>
-	<profile>
-			<id>xdev-ide</id>
+    <profile>
+            <id>xdev-ide</id>
 
-			<dependencies>
-				<dependency>
-					<groupId>com.xdev-software</groupId>
-					<artifactId>xapi-fx</artifactId>
-					<version>6.0.2-java8</version>
-				</dependency>
-			</dependencies>
+            <dependencies>
+                <dependency>
+                    <groupId>com.xdev-software</groupId>
+                    <artifactId>xapi-fx</artifactId>
+                    <version>6.0.2-java8</version>
+                </dependency>
+            </dependencies>
 
-			<build>
-				<plugins>
+            <build>
+                <plugins>
 
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-shade-plugin</artifactId>
-						<version>3.3.0</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>shade</goal>
-								</goals>
-								<configuration>
-									<createSourcesJar>true</createSourcesJar>
-									<transformers>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <version>3.3.0</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                                <configuration>
+                                    <createSourcesJar>true</createSourcesJar>
+                                    <transformers>
 
-										<!-- we don't include the MANIFEST.MF files from other jar to avoid 
-											them from overriding ours -->
-										<transformer
-											implementation="org.apache.maven.plugins.shade.resource.DontIncludeResourceTransformer">
-											<resource>MANIFEST.MF</resource>
-										</transformer>
+                                        <!-- we don't include the MANIFEST.MF files from other jar to avoid 
+                                            them from overriding ours -->
+                                        <transformer
+                                            implementation="org.apache.maven.plugins.shade.resource.DontIncludeResourceTransformer">
+                                            <resource>MANIFEST.MF</resource>
+                                        </transformer>
 
-										<!-- adding some infos to the MANIFEST.MF -->
-										<transformer
-											implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-											<manifestEntries>
-												<X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
-												<X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
-											</manifestEntries>
-										</transformer>
+                                        <!-- adding some infos to the MANIFEST.MF -->
+                                        <transformer
+                                            implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                            <manifestEntries>
+                                                <X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
+                                                <X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
+                                            </manifestEntries>
+                                        </transformer>
 
-									</transformers>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
+                                    </transformers>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
 
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-						<configuration>
-							<ignoredUnusedDeclaredDependencies>
-								<!-- we don't use that - we are building a fat jar for the IDE -->
-								<ignoredUnusedDeclaredDependencies>com.xdev-software:xapi-fx</ignoredUnusedDeclaredDependencies>
-							</ignoredUnusedDeclaredDependencies>
-						</configuration>
-					</plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <configuration>
+                            <ignoredUnusedDeclaredDependencies>
+                                <!-- we don't use that - we are building a fat jar for the IDE -->
+                                <ignoredUnusedDeclaredDependencies>com.xdev-software:xapi-fx</ignoredUnusedDeclaredDependencies>
+                            </ignoredUnusedDeclaredDependencies>
+                        </configuration>
+                    </plugin>
 
-				</plugins>
-			</build>
-		</profile>
+                </plugins>
+            </build>
+        </profile>
 
         <profile>
             <id>ossrh</id>
