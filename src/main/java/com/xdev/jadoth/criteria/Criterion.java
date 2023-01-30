@@ -17,9 +17,6 @@
  */
 package com.xdev.jadoth.criteria;
 
-/**
- * 
- */
 
 /**
  * @author Thomas Muenz

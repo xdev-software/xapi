@@ -16,9 +16,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.xdev.jadoth.util.strings;
-/**
- * 
- */
 
 /**
  * @author Thomas Muenz
