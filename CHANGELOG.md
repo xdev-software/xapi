@@ -8,6 +8,8 @@
     ```java
     protected void defineTriggers(final DbmsAdaptor<?> dbms)
     ```
+* Updated dependencies
+* Synced repo with XDEVs standards
 
 ## 6.0.1
 * Don't start AWT Threads when not required #57
