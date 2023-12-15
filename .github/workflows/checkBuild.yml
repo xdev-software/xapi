@@ -53,7 +53,7 @@ jobs:
           exit 1
         fi
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: jars-java-${{ matrix.java }}
         path: target/*.jar
